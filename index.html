@@ -279,6 +279,16 @@ footer .big{margin-top:14px}
 nav a.nav-book{color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:4px 12px}
 nav a.nav-book:hover{background:var(--accent);color:#fff}
 @media (max-width:820px){ nav a.nav-book{display:inline-block} nav a[href="#work-with-me"]{display:none} }
+.sessions{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:36px}
+.sess-col h4{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.sess{display:grid;grid-template-columns:1fr auto auto;grid-template-rows:auto auto;column-gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none}
+.s-name{font:400 19px/1.3 var(--serif);color:var(--ink);transition:color .2s}
+.s-meta{grid-row:2;font:400 12.5px var(--mono);color:var(--faint);margin-top:3px}
+.s-price{grid-row:1/3;grid-column:2;font:500 14px var(--mono);color:var(--ink)}
+.s-price.free{color:#2f9a6a}
+.s-go{grid-row:1/3;grid-column:3;color:var(--faint);transition:transform .2s,color .2s}
+.sess:hover .s-name,.sess:hover .s-go{color:var(--accent)} .sess:hover .s-go{transform:translateX(3px)}
+@media (max-width:820px){ .sessions{grid-template-columns:1fr} }
 /* grid of systems */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
@@ -871,7 +881,18 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
     <div class="book">
       <a class="btn primary" href="https://topmate.io/ajay_jangid14/">Book a 1:1 on Topmate →</a>
       <a class="btn" href="mailto:jangidajay271@gmail.com?subject=Consulting%20enquiry">Or email me</a>
-      <span class="book-note">Pick a slot that suits you — consulting intros, design reviews or career conversations.</span>
+    </div>
+    <div class="sessions">
+      <div class="sess-col"><h4>For teams &amp; companies</h4>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317614"><span class="s-name">Intro call: consulting & collaborations</span><span class="s-meta">15 min · video</span><span class="s-price free">Free</span><span class="s-go">→</span></a>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317617"><span class="s-name">Architecture review: GenAI, RAG & agents</span><span class="s-meta">60 min · video</span><span class="s-price">₹1,499</span><span class="s-go">→</span></a>
+      </div>
+      <div class="sess-col"><h4>For individuals &amp; careers in AI</h4>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317619"><span class="s-name">Career guidance in AI</span><span class="s-meta">30 min · video</span><span class="s-price">₹499</span><span class="s-go">→</span></a>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317625"><span class="s-name">Resume review for AI/ML roles</span><span class="s-meta">30 min · video</span><span class="s-price">₹399</span><span class="s-go">→</span></a>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317627"><span class="s-name">Breaking into AI: land your first AI job</span><span class="s-meta">45 min · video</span><span class="s-price">₹699</span><span class="s-go">→</span></a>
+        <a class="sess" href="https://topmate.io/ajay_jangid14/2317628"><span class="s-name">Priority DM: ask me anything on AI</span><span class="s-meta">written reply</span><span class="s-price">₹299</span><span class="s-go">→</span></a>
+      </div>
     </div>
     <div class="offers">
       <div><h3>Architecture reviews</h3><p>A second pair of eyes on your GenAI, RAG or agentic system design — before it meets production traffic or an auditor.</p></div>
