@@ -108,7 +108,6 @@ p + p{margin-top:14px}
 .mem.on{border-color:var(--accent);color:var(--ink)}
 .mem-act{display:block;margin-top:4px;color:var(--accent);min-height:1.5em}
 .trace{margin:0 0 26px;background:var(--node);border:1px solid var(--rule);border-radius:10px;padding:12px 16px 14px}
-.anim[data-anim="voice"] .trace{margin-top:-8px}
 .trace-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
 .live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{50%{opacity:.25}}
@@ -125,6 +124,85 @@ p + p{margin-top:14px}
 .trace li.cur .wave b{animation:wv .9s ease-in-out infinite alternate}
 @keyframes wv{from{height:15%}to{height:100%}}
 @media (prefers-reduced-motion:reduce){.live i,.diagram .ln.on,.diagram .eval.on,.trace li.cur .wave b{animation:none}}
+/* ===== call journey scene ===== */
+.scene{margin:28px 0 26px}
+.scene-frame{background:var(--node);border:1px solid var(--rule);border-radius:12px;overflow-x:auto}
+.scene svg{display:block;width:100%;min-width:620px;height:auto}
+.scene{--skin:#f3cfae;--hair:#2c2436;--hair2:#4a2f35;--shirt:#3e5f96;--top2:#c95b76;--iris:#2a2440}
+.scene .skin{fill:var(--skin)} .scene .hair{fill:var(--hair)} .scene .hair2{fill:var(--hair2)}
+.scene .shirt{fill:var(--shirt)} .scene .top2{fill:var(--top2)} .scene .collar{fill:#fff}
+.scene .tie{fill:var(--accent)} .scene .desk{fill:var(--rule)}
+.scene .iris{fill:var(--iris)} .scene .glint{fill:#fff} .scene .blush{fill:#f08c8c;opacity:.55}
+.scene .lash{stroke:var(--iris);stroke-width:1.4;stroke-linecap:round}
+.scene .headset{fill:none;stroke:#34323a;stroke-width:3.2;stroke-linecap:round} .scene .headset.thin{stroke-width:1.8}
+.scene .cup{fill:#34323a} .scene .phone{fill:#34323a}
+.scene .mouth{fill:none;stroke:#8a3b3b;stroke-width:1.6;stroke-linecap:round}
+.scene .mouth-o{fill:#8a3b3b;opacity:0}
+.scene .talk-rm .m-rm,.scene .talk-cu .m-cu{opacity:0}
+.scene .talk-rm .m-rm-o,.scene .talk-cu .m-cu-o{opacity:1;animation:talk .22s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes talk{from{transform:scaleY(.35)}to{transform:scaleY(1.1)}}
+.scene .eye{transform-box:fill-box;transform-origin:center;animation:blink2 4.2s infinite}
+@keyframes blink2{0%,95%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.scene .waves path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.scene .talk-rm .w-rm path,.scene .talk-cu .w-cu path{animation:wave 1s ease-out infinite}
+.scene .waves path:nth-child(2){animation-delay:.18s!important} .scene .waves path:nth-child(3){animation-delay:.36s!important}
+@keyframes wave{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+.scene .rec circle{fill:#d63b3b;animation:blink 1s infinite} .scene .rec text{font:500 10px var(--mono);fill:var(--muted)}
+.scene .rec{opacity:0;transition:opacity .3s} .scene .recording .rec{opacity:1}
+.scene .bubble{opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.scene .bubble.show{opacity:1;transform:none}
+.scene .bubble rect,.scene .bubble path{fill:var(--surface);stroke:var(--rule);stroke-width:1.2}
+.scene .bubble path{stroke:none}
+.scene .bubble text{font:500 12.5px var(--sans);fill:var(--ink);text-anchor:middle}
+.scene .wire{fill:none;stroke:var(--rule);stroke-width:2;stroke-dasharray:5 6}
+.scene .ico{fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;transition:stroke .4s}
+.scene .ico.thin{stroke-width:1.2} .scene .ico.fillb{fill:var(--surface)}
+.scene .dot{fill:var(--muted);transition:fill .4s}
+.scene .st.on .ico{stroke:var(--accent)} .scene .st.on .dot{fill:var(--accent)}
+.scene .lbl1{font:600 14px var(--sans);fill:var(--ink);transition:fill .4s} .scene .st.on .lbl1{fill:var(--accent)}
+.scene .lbl2{font:400 11.5px var(--mono);fill:var(--faint)}
+.scene .sig path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;opacity:0}
+.scene .st.on .sig path{animation:wave 1s ease-out infinite} .scene .st.on .sig path:nth-child(n+3){animation-delay:.3s}
+.scene .led{fill:var(--rule)} .scene .st.on .led{animation:led .5s steps(2) infinite}
+.scene .st.on .l2{animation-delay:.12s} .scene .st.on .l3{animation-delay:.24s} .scene .st.on .l4{animation-delay:.36s}
+@keyframes led{0%{fill:#3fb27f}100%{fill:var(--rule)}}
+.scene .file{fill:var(--surface);stroke:var(--muted);stroke-width:1.4} .scene .f-top{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.scene .st.on .f-top{stroke:var(--accent);transform:translateY(-6px)}
+.scene .plus{font:600 13px var(--mono);fill:var(--accent);opacity:0}
+.scene .st.on .plus{animation:plus 1.4s ease-out forwards}
+@keyframes plus{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+.scene .t-in{font:600 13px var(--sans);fill:var(--ink)}
+.scene .pill rect{fill:var(--node);stroke:var(--rule);stroke-width:1.2;transition:fill .3s,stroke .3s}
+.scene .pill text{font:500 12px var(--mono);fill:var(--muted);text-anchor:middle}
+.scene .pill.on rect{fill:var(--accent-soft);stroke:var(--accent)} .scene .pill.on text{fill:var(--accent)}
+.scene .ai-line{font:400 11px var(--mono);fill:var(--muted)}
+.scene .ring-bg{fill:none;stroke:var(--rule);stroke-width:6}
+.scene .ring{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset 1.2s ease-out}
+.scene .filled .ring{stroke-dashoffset:24.5}
+.scene .score{font:600 13px var(--mono);fill:var(--ink);opacity:0;transition:opacity .4s .8s} .scene .filled .score{opacity:1}
+.scene .flag{opacity:0;transform:translateY(-4px);transition:opacity .4s 1.1s,transform .4s 1.1s} .scene .filled .flag{opacity:1;transform:none}
+.scene .flag rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1} .scene .flag text{font:500 10.5px var(--mono);fill:var(--accent)}
+.scene .bars rect{fill:var(--rule);transform-box:fill-box;transform-origin:bottom;transform:scaleY(.15);transition:transform .8s ease-out}
+.scene .bars .last{fill:var(--accent)}
+.scene .filled .bars rect:nth-child(1){transform:scaleY(.45)} .scene .filled .bars rect:nth-child(2){transform:scaleY(.6)}
+.scene .filled .bars rect:nth-child(3){transform:scaleY(.52)} .scene .filled .bars rect:nth-child(4){transform:scaleY(.72);transition-delay:.1s}
+.scene .filled .bars rect:nth-child(5){transform:scaleY(.9);transition-delay:.25s}
+.scene .laptop{fill:#34323a} .scene .lap-t{font:600 11px var(--mono);fill:#f3a26f;opacity:.35;transition:opacity .4s}
+.scene .st.on .lap-t{opacity:1}
+.scene .pkt{opacity:0;transition:opacity .35s} .scene .pkt.show{opacity:1}
+.scene .pkt rect{fill:var(--accent)} .scene .pkt-t{font:600 10.5px var(--mono);fill:#fff}
+.scene-cap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px}
+.prog{display:flex;gap:4px;flex:1;order:2}
+.scene-cap .tbtn{order:3}
+.prog i{width:18px;height:4px;border-radius:2px;background:var(--rule);transition:background .3s}
+.prog i.done{background:var(--faint)} .prog i.cur{background:var(--accent)}
+.caps{list-style:none;flex-basis:100%;order:1;min-height:3em;position:relative}
+.caps li{position:absolute;inset:0;opacity:0;transition:opacity .4s;font-size:14.5px;color:var(--muted);line-height:1.5}
+.caps li.cur{opacity:1}
+.caps b{color:var(--ink);font-weight:600;margin-right:6px}
+.static .caps{min-height:0} .static .caps li{position:static;opacity:1;margin-bottom:4px}
+@media (max-width:820px){ .caps{min-height:4.6em} .scene-frame{scroll-behavior:smooth;scrollbar-width:none} }
+@media (prefers-reduced-motion:reduce){ .scene *{animation:none!important;transition:none!important} }
 /* grid of systems */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
@@ -274,41 +352,135 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       <h3>Call Analytics Intelligence Platform</h3>
       <p>An enterprise platform that listens to every contact-centre call and turns it into intent, sentiment, compliance flags, a 20-parameter quality score and agent-level performance trends. Around 2,000 call-hours a day, on a model-agnostic stack.</p>
 
-      <div class="anim" data-anim="voice">
-      <div class="diagram" role="img" aria-label="Pipeline: telephony audio to pluggable ASR and diarization, to an LLM router over self-hosted or API models, to scoring and extraction, to analytics dashboards, with an evaluation harness checking scoring quality.">
-        <svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg">
-          <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-          <text class="lab" x="0" y="14">INGEST</text><text class="lab" x="190" y="14">SPEECH</text><text class="lab" x="380" y="14">SERVING</text><text class="lab" x="570" y="14">UNDERSTANDING</text><text class="lab" x="760" y="14">OUTPUT</text>
-          <rect class="box node" data-s="0" x="0" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="14" y="56">Telephony audio</text><text class="t2" x="14" y="78">8 kHz · G.711</text><text class="t2" x="14" y="96">multilingual</text>
-          <rect class="box node" data-s="1" x="190" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="204" y="56">ASR + diarization</text><text class="t2" x="204" y="78">pluggable engine</text><text class="t2" x="204" y="96">open-source or API</text>
-          <rect class="box node" data-s="2" x="380" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="394" y="56">LLM router</text><text class="t2" x="394" y="78">self-hosted or API</text><text class="t2" x="394" y="96">config + fallback</text>
-          <rect class="box node" data-s="3" x="570" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="584" y="56">Scoring + extraction</text><text class="t2" x="584" y="78">20-param rubric</text><text class="t2" x="584" y="96">intent · compliance</text>
-          <rect class="box node" data-s="4" x="760" y="30" width="140" height="86" rx="8"/>
-          <text class="t1" x="774" y="56">Analytics</text><text class="t2" x="774" y="78">agent + RM trends</text><text class="t2" x="774" y="96">WoW / MoM</text>
-          <path class="ln node" data-s="1" d="M150,73 H186" marker-end="url(#a)"/><path class="ln node" data-s="2" d="M340,73 H376" marker-end="url(#a)"/>
-          <path class="ln node" data-s="3" d="M530,73 H566" marker-end="url(#a)"/><path class="ln node" data-s="4" d="M720,73 H756" marker-end="url(#a)"/>
-          <rect class="box node" data-s="3" x="570" y="160" width="150" height="56" rx="8"/>
-          <text class="t1" x="584" y="184">Eval harness</text><text class="t2" x="584" y="203">Cohen's κ vs humans</text>
-          <path class="eval node" data-s="3" d="M645,160 V120"/>
-          <rect class="box" x="190" y="160" width="340" height="56" rx="8" style="stroke-dasharray:3 3"/>
-          <text class="t1" x="204" y="184">Governed deployment</text><text class="t2" x="204" y="203">on-prem or cloud · PII masking · RBAC</text>
-          <path class="ln" d="M265,160 V120" style="stroke-dasharray:2 3"/><path class="ln" d="M455,160 V120" style="stroke-dasharray:2 3"/>
+      <div class="scene" data-scene>
+        <div class="scene-frame">
+        <svg viewBox="0 0 960 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated story: an RM and a customer talk on a call; the recording travels over the telecom network, through the bank's firewall and recording server into secure storage; the AI framework transcribes and scores it; the score and flags appear on a business dashboard; the RM reviews the feedback.">
+          <defs>
+            <g id="rmFig">
+              <rect x="28" y="178" width="104" height="10" rx="4" class="desk"/>
+              <path class="shirt" d="M48,180 C48,150 60,130 80,127 C100,130 112,150 112,180 Z"/>
+              <path class="collar" d="M72,129 L80,140 L88,129 L84,127 L80,132 L76,127 Z"/>
+              <path class="tie" d="M78,138 L82,138 L85,158 L80,166 L75,158 Z"/>
+              <rect x="74" y="118" width="12" height="12" class="skin"/>
+              <circle cx="80" cy="100" r="24" class="skin"/>
+              <path class="hair" d="M55,100 C52,74 68,64 82,66 C98,66 108,78 105,99 L100,88 L97,96 L93,84 L87,94 L82,82 L76,94 L70,84 L64,96 L60,88 Z"/>
+              <g class="eye"><ellipse cx="71" cy="104" rx="3.4" ry="4.4" class="iris"/><circle cx="72.2" cy="102.4" r="1.2" class="glint"/></g>
+              <g class="eye"><ellipse cx="89" cy="104" rx="3.4" ry="4.4" class="iris"/><circle cx="90.2" cy="102.4" r="1.2" class="glint"/></g>
+              <ellipse cx="65" cy="111" rx="3.2" ry="1.7" class="blush"/><ellipse cx="95" cy="111" rx="3.2" ry="1.7" class="blush"/>
+              <path class="headset" d="M55,98 C55,68 105,68 105,98"/>
+              <rect x="50" y="93" width="8" height="15" rx="3" class="cup"/>
+              <path class="headset thin" d="M55,106 Q58,118 71,118"/><circle cx="72" cy="118" r="2.2" class="cup"/>
+            </g>
+          </defs>
+
+          <!-- route wire -->
+          <path class="wire" d="M150,215 H910 V440 H150"/>
+
+          <!-- ===== 0 · THE CALL ===== -->
+          <g class="st" data-s="0">
+            <use href="#rmFig"/>
+            <path class="mouth m-rm" d="M76,115 Q80,118.5 84,115"/><ellipse class="mouth-o m-rm-o" cx="80" cy="116" rx="3" ry="2.4"/>
+            <!-- customer -->
+            <path class="hair2" d="M194,102 C191,70 210,64 222,66 C238,66 251,78 248,104 L251,142 L236,134 L236,110 L206,110 L206,134 L191,142 Z"/>
+            <path class="top2" d="M190,180 C190,152 201,132 220,129 C239,132 250,152 250,180 Z"/>
+            <rect x="214" y="118" width="12" height="12" class="skin"/>
+            <circle cx="220" cy="100" r="24" class="skin"/>
+            <path class="hair2" d="M196,97 C197,76 211,69 224,71 C237,71 246,82 245,97 C238,86 229,83 222,90 C216,83 205,86 196,97 Z"/>
+            <g class="eye"><ellipse cx="211" cy="104" rx="3.4" ry="4.6" class="iris"/><circle cx="212.2" cy="102.3" r="1.3" class="glint"/></g>
+            <g class="eye"><ellipse cx="229" cy="104" rx="3.4" ry="4.6" class="iris"/><circle cx="230.2" cy="102.3" r="1.3" class="glint"/></g>
+            <path class="lash" d="M206.5,98.5 L209,99.6 M233.5,98.5 L231,99.6"/>
+            <ellipse cx="205" cy="111" rx="3.2" ry="1.7" class="blush"/><ellipse cx="235" cy="111" rx="3.2" ry="1.7" class="blush"/>
+            <path class="mouth m-cu" d="M216,115 Q220,118.5 224,115"/><ellipse class="mouth-o m-cu-o" cx="220" cy="116" rx="3" ry="2.4"/>
+            <rect x="241" y="95" width="9" height="19" rx="2" class="phone"/><ellipse cx="246" cy="114" rx="5" ry="4" class="skin"/>
+            <!-- voice waves -->
+            <g class="waves w-rm"><path d="M122,92 q5,8 0,16"/><path d="M129,88 q7,12 0,24"/><path d="M136,84 q9,16 0,32"/></g>
+            <g class="waves w-cu"><path d="M178,92 q-5,8 0,16"/><path d="M171,88 q-7,12 0,24"/><path d="M164,84 q-9,16 0,32"/></g>
+            <g class="rec"><circle cx="138" cy="160" r="4"/><text x="146" y="164">REC</text></g>
+            <!-- bubbles -->
+            <g class="bubble b0"><rect x="4" y="10" width="184" height="32" rx="12"/><path d="M66,41 L74,54 L82,41 Z"/><text x="96" y="31">Namaste! How can I help?</text></g>
+            <g class="bubble b1"><rect x="112" y="10" width="184" height="32" rx="12"/><path d="M212,41 L220,54 L228,41 Z"/><text x="204" y="31">Mera card block ho gaya…</text></g>
+            <g class="bubble b2"><rect x="4" y="10" width="184" height="32" rx="12"/><path d="M66,41 L74,54 L82,41 Z"/><text x="96" y="31">Unblocking it right now.</text></g>
+            <g class="bubble b3"><rect x="112" y="10" width="184" height="32" rx="12"/><path d="M212,41 L220,54 L228,41 Z"/><text x="204" y="31">Thank you so much!</text></g>
+            <text class="lbl1" x="150" y="240" text-anchor="middle">The call</text><text class="lbl2" x="150" y="256" text-anchor="middle">RM ↔ customer, recorded</text>
+          </g>
+
+          <!-- ===== 1 · TELECOM ===== -->
+          <g class="st" data-s="1">
+            <path class="ico" d="M364,205 L380,92 L396,205 M369,172 L391,172 M372,146 L388,146 M376,120 L384,120 M364,205 L388,146 M396,205 L372,146 M369,172 L384,120 M391,172 L376,120"/>
+            <circle cx="380" cy="86" r="5" class="dot"/>
+            <g class="sig"><path d="M366,76 q-8,10 0,20"/><path d="M394,76 q8,10 0,20"/><path d="M357,68 q-13,18 0,36"/><path d="M403,68 q13,18 0,36"/></g>
+            <text class="lbl1" x="380" y="240" text-anchor="middle">Telecom network</text><text class="lbl2" x="380" y="256" text-anchor="middle">PSTN · SIP trunk</text>
+          </g>
+
+          <!-- ===== 2 · BANK NETWORK ===== -->
+          <g class="st" data-s="2">
+            <path class="ico fillb" d="M540,96 L566,106 L566,132 C566,152 554,164 540,171 C526,164 514,152 514,132 L514,106 Z"/>
+            <rect x="531" y="130" width="18" height="15" rx="2" class="dot"/><path class="ico" d="M534,130 V124 a6,6 0 0 1 12,0 V130"/>
+            <rect x="582" y="98" width="46" height="104" rx="5" class="ico fillb"/>
+            <path class="ico thin" d="M590,122 H620 M590,146 H620 M590,170 H620"/>
+            <circle class="led l1" cx="620" cy="110" r="2.6"/><circle class="led l2" cx="620" cy="134" r="2.6"/><circle class="led l3" cx="620" cy="158" r="2.6"/><circle class="led l4" cx="620" cy="182" r="2.6"/>
+            <text class="lbl1" x="572" y="240" text-anchor="middle">Bank network</text><text class="lbl2" x="572" y="256" text-anchor="middle">firewall · recording server</text>
+          </g>
+
+          <!-- ===== 3 · STORAGE ===== -->
+          <g class="st" data-s="3">
+            <path class="ico fillb" d="M742,160 C718,160 716,126 742,123 C744,96 778,86 792,106 C804,88 838,96 836,124 C862,126 860,160 836,160 Z"/>
+            <g class="files"><rect x="772" y="126" width="22" height="26" rx="3" class="file"/><rect x="780" y="120" width="22" height="26" rx="3" class="file"/><rect x="788" y="114" width="22" height="26" rx="3" class="file f-top"/></g>
+            <text class="plus" x="820" y="112">+1</text>
+            <text class="lbl1" x="790" y="240" text-anchor="middle">Secure storage</text><text class="lbl2" x="790" y="256" text-anchor="middle">encrypted recordings</text>
+          </g>
+
+          <!-- ===== 4 · AI FRAMEWORK ===== -->
+          <g class="st" data-s="4">
+            <rect x="652" y="286" width="226" height="124" rx="14" class="ico fillb"/>
+            <text class="t-in" x="670" y="314">AI framework</text>
+            <g class="pill p0"><rect x="668" y="330" width="60" height="26" rx="13"/><text x="698" y="347">ASR</text></g>
+            <g class="pill p1"><rect x="736" y="330" width="60" height="26" rx="13"/><text x="766" y="347">LLM</text></g>
+            <g class="pill p2"><rect x="804" y="330" width="60" height="26" rx="13"/><text x="834" y="347">Score</text></g>
+            <text class="ai-line" x="670" y="386">model-agnostic · PII masked</text>
+            <text class="lbl1" x="765" y="465" text-anchor="middle">AI framework</text><text class="lbl2" x="765" y="481" text-anchor="middle">transcribe · understand · score</text>
+          </g>
+
+          <!-- ===== 5 · DASHBOARD ===== -->
+          <g class="st" data-s="5">
+            <rect x="368" y="284" width="206" height="124" rx="9" class="ico fillb"/>
+            <path class="ico" d="M462,408 V420 M482,408 V420 M448,422 H496"/>
+            <circle cx="414" cy="352" r="26" class="ring-bg"/>
+            <circle cx="414" cy="352" r="26" class="ring" transform="rotate(-90 414 352)"/>
+            <text class="score" x="414" y="357" text-anchor="middle">17/20</text>
+            <g class="flag"><rect x="382" y="293" width="118" height="19" rx="9.5"/><text x="441" y="306" text-anchor="middle">⚑ disclosure missed</text></g>
+            <g class="bars"><rect x="460" y="340" width="12" height="44" rx="2"/><rect x="478" y="340" width="12" height="44" rx="2"/><rect x="496" y="340" width="12" height="44" rx="2"/><rect x="514" y="340" width="12" height="44" rx="2"/><rect x="532" y="340" width="12" height="44" rx="2" class="last"/></g>
+            <text class="lbl1" x="471" y="465" text-anchor="middle">Business dashboard</text><text class="lbl2" x="471" y="481" text-anchor="middle">scores · flags · trends</text>
+          </g>
+
+          <!-- ===== 6 · RM REVIEW ===== -->
+          <g class="st" data-s="6">
+            <use href="#rmFig" transform="translate(82 245) scale(.85)"/>
+            <path class="mouth" d="M146.6,342.7 Q150,346 153.4,342.7"/>
+            <rect x="178" y="362" width="66" height="40" rx="4" class="laptop"/>
+            <text class="lap-t" x="211" y="387" text-anchor="middle">17/20 ⚑</text>
+            <rect x="172" y="402" width="78" height="5" rx="2" class="laptop"/>
+            <g class="bubble b4"><rect x="40" y="264" width="208" height="32" rx="12"/><path d="M138,295 L146,308 L154,295 Z"/><text x="144" y="285">Noted: explain charges next time.</text></g>
+            <text class="lbl1" x="150" y="465" text-anchor="middle">RM gets feedback</text><text class="lbl2" x="150" y="481" text-anchor="middle">coaching · WoW trends</text>
+          </g>
+
+          <!-- packet -->
+          <g class="pkt" transform="translate(150 215)"><rect x="-17" y="-11" width="34" height="22" rx="6"/><text class="pkt-t" y="4" text-anchor="middle">♪ rec</text></g>
         </svg>
-      </div>
-      <div class="trace">
-        <div class="trace-head"><span class="live"><i></i>Illustrative run · one call through the pipeline</span><button class="tbtn" type="button">Pause</button></div>
-        <ol>
-          <li data-s="0"><em>ingest</em>call received · 6m 12s · stereo, 8 kHz<span class="wave" aria-hidden="true"><b style="animation-delay:-0.00s"></b><b style="animation-delay:-0.37s"></b><b style="animation-delay:-0.74s"></b><b style="animation-delay:-0.21s"></b><b style="animation-delay:-0.58s"></b><b style="animation-delay:-0.05s"></b><b style="animation-delay:-0.42s"></b><b style="animation-delay:-0.79s"></b><b style="animation-delay:-0.26s"></b><b style="animation-delay:-0.63s"></b><b style="animation-delay:-0.10s"></b><b style="animation-delay:-0.47s"></b><b style="animation-delay:-0.84s"></b><b style="animation-delay:-0.31s"></b><b style="animation-delay:-0.68s"></b><b style="animation-delay:-0.15s"></b><b style="animation-delay:-0.52s"></b><b style="animation-delay:-0.89s"></b></span></li>
-          <li data-s="1"><em>asr</em>[agent] <q>Namaste sir, main aapki kaise help kar sakta hoon?</q> [customer] <q>Card block ho gaya hai, urgent hai</q> · Hindi-English · 2 speakers</li>
-          <li data-s="2"><em>route</em>scoring task → primary model · fallback provider armed · PII masked before inference</li>
-          <li data-s="3"><em>score</em>greeting ✓ · verification ✓ · empathy ✓ · disclosure ✗ → 17/20 · compliance flag · sampled for κ audit</li>
-          <li data-s="4"><em>trend</em>agent quality WoW +4% · RM cohort dashboard refreshed</li>
-        </ol>
-      </div>
+        </div>
+        <div class="scene-cap">
+          <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <ol class="caps">
+            <li><b>The call</b> An RM helps a customer; the conversation is recorded.</li>
+            <li><b>Telecom network</b> The audio travels over PSTN / SIP trunks into the bank.</li>
+            <li><b>Bank network</b> Inside the firewall, the recording server captures the call.</li>
+            <li><b>Secure storage</b> Recordings land in encrypted storage, ready for analysis.</li>
+            <li><b>AI framework</b> Pluggable ASR transcribes, an LLM scores the call on a 20-point rubric, with PII masked throughout.</li>
+            <li><b>Business dashboard</b> Scores, compliance flags and trends flow to the business.</li>
+            <li><b>Feedback loop</b> The RM sees exactly what to improve on the next call.</li>
+          </ol>
+          <button class="tbtn" type="button">Pause</button>
+        </div>
       </div>
 
       <div class="facts">
@@ -524,6 +696,88 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       paused = !paused; btn.textContent = paused ? 'Play' : 'Pause';
       if (paused){ clearTimeout(timer); timer = null; } else if (!timer) step();
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.querySelector('[data-scene]'); if (!root) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var svg = root.querySelector('svg'), st = root.querySelectorAll('.st'), caps = root.querySelectorAll('.caps li'),
+      prog = root.querySelectorAll('.prog i'), btn = root.querySelector('.tbtn'), pkt = root.querySelector('.pkt'),
+      pktT = root.querySelector('.pkt-t'), s0 = st[0], s4 = st[4], s5 = st[5], aiLine = root.querySelector('.ai-line');
+  var bubbles = root.querySelectorAll('.bubble'), pills = root.querySelectorAll('.pill');
+  var pts = [[150,215],[380,215],[572,215],[790,215],[910,215],[910,440],[765,440],[471,440],[150,440]];
+  var stop = [0,1,2,3,6,7,8];
+  var dur = [5200,1900,1900,1900,3900,3000,3200];
+  var k = -1, timers = [], raf = null, visible = false, paused = false;
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function clearAll(){ timers.forEach(clearTimeout); timers = []; if (raf) cancelAnimationFrame(raf); raf = null; }
+  function place(x,y){ pkt.setAttribute('transform','translate('+x+' '+y+')'); }
+  function move(a, b, ms){
+    var seg = [], tot = 0;
+    for (var i=a; i<b; i++){ var d = Math.hypot(pts[i+1][0]-pts[i][0], pts[i+1][1]-pts[i][1]); seg.push(d); tot += d; }
+    var t0 = performance.now();
+    (function f(now){
+      var t = Math.min(1,(now-t0)/ms); t = t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+      var dist = t*tot, i = a, j = 0;
+      while (j < seg.length-1 && dist > seg[j]){ dist -= seg[j]; j++; } i = a+j;
+      var r = seg[j] ? Math.min(1, dist/seg[j]) : 1;
+      place(pts[i][0]+(pts[i+1][0]-pts[i][0])*r, pts[i][1]+(pts[i+1][1]-pts[i][1])*r);
+      if (t < 1) raf = requestAnimationFrame(f);
+    })(t0);
+  }
+  function reset(){
+    st.forEach(function(e){ e.classList.remove('on','filled','recording','talk-rm','talk-cu'); });
+    bubbles.forEach(function(b){ b.classList.remove('show'); }); pills.forEach(function(p){ p.classList.remove('on'); });
+    pkt.classList.remove('show'); pktT.textContent = '♪ rec'; place(150,215); aiLine.textContent = 'model-agnostic · PII masked';
+  }
+  function talk(who, b){
+    s0.classList.remove('talk-rm','talk-cu'); bubbles.forEach(function(x){ x.classList.remove('show'); });
+    if (who){ s0.classList.add('talk-'+who); bubbles[b].classList.add('show'); }
+  }
+  var frame = root.querySelector('.scene-frame'), cx = [150,380,572,790,765,471,150];
+  function follow(n){
+    if (frame.scrollWidth <= frame.clientWidth + 2) return;
+    frame.scrollLeft = cx[n] / 960 * svg.getBoundingClientRect().width - frame.clientWidth / 2;
+  }
+  function stage(n){
+    k = n; follow(n);
+    st.forEach(function(e,i){ e.classList.toggle('on', i===n); });
+    caps.forEach(function(e,i){ e.classList.toggle('cur', i===n); });
+    prog.forEach(function(e,i){ e.classList.toggle('cur', i===n); e.classList.toggle('done', i<n); });
+    if (n===0){
+      reset(); st[0].classList.add('on'); s0.classList.add('recording');
+      talk('rm',0); later(function(){talk('cu',1);},1300); later(function(){talk('rm',2);},2600); later(function(){talk('cu',3);},3800);
+      later(function(){ talk(null); pkt.classList.add('show'); }, 4900);
+    } else {
+      if (n===1) { s0.classList.remove('recording'); pkt.classList.add('show'); }
+      move(stop[n-1], stop[n], n===4 ? 1300 : 1100);
+    }
+    if (n===4){
+      var lines = ['transcribing · Hindi-English · 2 speakers','routing to model · self-hosted or API','20-pt rubric · κ-audited'];
+      [0,1,2].forEach(function(i){ later(function(){ pills.forEach(function(p,j){ p.classList.toggle('on', j<=i); }); aiLine.textContent = lines[i]; }, 1300 + i*850); });
+      later(function(){ pktT.textContent = '{ } json'; }, 3700);
+    }
+    if (n===5) later(function(){ s5.classList.add('filled'); }, 900);
+    if (n===6){ s5.classList.add('filled'); later(function(){ bubbles[4].classList.add('show'); }, 1200); later(function(){ pkt.classList.remove('show'); }, 1300); }
+    later(next, dur[n]);
+  }
+  function next(){ if (paused || !visible) return; stage(k >= 6 ? 0 : k+1); }
+  if (reduce){
+    root.classList.add('static'); btn.hidden = true;
+    s5.classList.add('filled'); pills.forEach(function(p){ p.classList.add('on'); }); bubbles[4].classList.add('show');
+    return;
+  }
+  reset();
+  new IntersectionObserver(function(es){
+    visible = es[0].isIntersecting;
+    if (!visible){ clearAll(); }
+    else if (!paused){ clearAll(); stage(k < 0 ? 0 : k); }
+  }, {threshold:.3}).observe(root);
+  btn.addEventListener('click', function(){
+    paused = !paused; btn.textContent = paused ? 'Play' : 'Pause';
+    if (paused) clearAll(); else { clearAll(); stage(k < 0 ? 0 : k); }
   });
 })();
 </script>
