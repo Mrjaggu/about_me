@@ -9,6 +9,7 @@
 <meta property="og:description" content="Production voice AI, RAG and agentic systems for regulated banking.">
 <meta property="og:url" content="https://mrjaggu.github.io/about_me/">
 <meta property="og:type" content="profile">
+<meta property="og:image" content="https://mrjaggu.github.io/about_me/images/ajay.jpg">
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +63,9 @@ h2{font:400 40px/1.1 var(--serif)}
 p + p{margin-top:14px}
 .prose{max-width:680px;color:var(--ink)}
 .prose p{color:var(--muted)} .prose p strong{color:var(--ink);font-weight:500}
+.about{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start}
+.portrait img{display:block;width:160px;height:160px;object-fit:cover;border-radius:12px;border:1px solid var(--rule);filter:saturate(.85)}
+.portrait figcaption{margin-top:10px;font:400 12px var(--mono);color:var(--faint);letter-spacing:.04em}
 /* now */
 .now{list-style:none;border-top:1px solid var(--rule)}
 .now li{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule)}
@@ -145,6 +149,8 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   .stat:nth-child(n+3){border-top:1px solid var(--rule)}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .body{margin-left:0}
+  .about{grid-template-columns:1fr;gap:20px}
+  .portrait img{width:112px;height:112px}
   .grid,.pubs,.principles,.edu,.skills,.facts{grid-template-columns:1fr}
   .now li,.role{grid-template-columns:1fr;gap:4px}
   .feature{padding:24px 20px}
@@ -197,10 +203,13 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   <!-- ABOUT -->
   <section id="about">
     <div class="sec-head"><div class="sec-num">01 · About</div><h2>From models to platforms</h2></div>
-    <div class="body prose">
+    <div class="about">
+    <figure class="portrait"><img src="images/ajay.jpg" alt="Ajay Jangid" width="160" height="160" loading="lazy"><figcaption>Mumbai</figcaption></figure>
+    <div class="prose">
       <p><strong>I build the systems that sit between a model and a regulated business.</strong> At Axis Bank I lead AI &amp; GenAI engineering — the platforms that turn millions of customer conversations, documents and workflows into decisions, with the governance a bank needs: PII masking, role-based access, audit trails, and controls aligned to KYC/AML.</p>
       <p>My work spans the whole stack: self-hosted speech recognition for noisy Indic telephony audio, vLLM serving tuned for throughput on a fixed GPU budget, retrieval with guardrails, agentic workflows, and the evaluation harnesses that tell us whether any of it is actually getting better. I also write the business case — GPU economics and cost-per-call — because architecture decisions in a bank are budget decisions too.</p>
       <p>Before Axis I was at Accenture AI, BRIDGEi2i and a run of product teams, building recommendation engines, insurance-claims extraction, and computer vision. I've been writing on Medium about applied ML since 2019, and I mentor data scientists and interns on the team.</p>
+    </div>
     </div>
   </section>
 
@@ -225,18 +234,18 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
     <article class="feature">
       <div class="kicker">Flagship · Axis Bank · 2023 – present</div>
       <h3>Call Analytics Intelligence Platform</h3>
-      <p>An enterprise platform that listens to every contact-centre call and turns it into intent, sentiment, compliance flags, a 20-parameter quality score and agent-level performance trends. Around 2,000 call-hours a day, fully self-hosted.</p>
+      <p>An enterprise platform that listens to every contact-centre call and turns it into intent, sentiment, compliance flags, a 20-parameter quality score and agent-level performance trends. Around 2,000 call-hours a day, on a model-agnostic stack.</p>
 
-      <div class="diagram" role="img" aria-label="Pipeline: telephony audio to ASR and diarization, to a vLLM serving layer, to scoring and extraction, to analytics dashboards, with an evaluation harness checking scoring quality.">
+      <div class="diagram" role="img" aria-label="Pipeline: telephony audio to pluggable ASR and diarization, to an LLM router over self-hosted or API models, to scoring and extraction, to analytics dashboards, with an evaluation harness checking scoring quality.">
         <svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg">
           <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L10,5 L0,10 z"/></marker></defs>
           <text class="lab" x="0" y="14">INGEST</text><text class="lab" x="190" y="14">SPEECH</text><text class="lab" x="380" y="14">SERVING</text><text class="lab" x="570" y="14">UNDERSTANDING</text><text class="lab" x="760" y="14">OUTPUT</text>
           <rect class="box" x="0" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="14" y="56">Telephony audio</text><text class="t2" x="14" y="78">8 kHz · G.711</text><text class="t2" x="14" y="96">multilingual</text>
           <rect class="box" x="190" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="204" y="56">ASR + diarization</text><text class="t2" x="204" y="78">SraVaani / Whisper</text><text class="t2" x="204" y="96">batch + near-RT</text>
+          <text class="t1" x="204" y="56">ASR + diarization</text><text class="t2" x="204" y="78">pluggable engine</text><text class="t2" x="204" y="96">open-source or API</text>
           <rect class="box hot" x="380" y="30" width="150" height="86" rx="8"/>
-          <text class="t1" x="394" y="56">vLLM serving</text><text class="t2" x="394" y="78">TP1 × 4 replicas</text><text class="t2" x="394" y="96">80–90% prefix hit</text>
+          <text class="t1" x="394" y="56">LLM router</text><text class="t2" x="394" y="78">self-hosted or API</text><text class="t2" x="394" y="96">config + fallback</text>
           <rect class="box" x="570" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="584" y="56">Scoring + extraction</text><text class="t2" x="584" y="78">20-param rubric</text><text class="t2" x="584" y="96">intent · compliance</text>
           <rect class="box" x="760" y="30" width="140" height="86" rx="8"/>
@@ -247,13 +256,13 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
           <text class="t1" x="584" y="184">Eval harness</text><text class="t2" x="584" y="203">Cohen's κ vs humans</text>
           <path class="eval" d="M645,160 V120"/>
           <rect class="box" x="190" y="160" width="340" height="56" rx="8" style="stroke-dasharray:3 3"/>
-          <text class="t1" x="204" y="184">Air-gapped GPU environment</text><text class="t2" x="204" y="203">self-hosted models · PII masking · RBAC</text>
+          <text class="t1" x="204" y="184">Governed deployment</text><text class="t2" x="204" y="203">on-prem or cloud · PII masking · RBAC</text>
           <path class="ln" d="M265,160 V120" style="stroke-dasharray:2 3"/><path class="ln" d="M455,160 V120" style="stroke-dasharray:2 3"/>
         </svg>
       </div>
 
       <div class="facts">
-        <div><h4>Architecture</h4><p>Moved from a legacy batch Ray Serve pipeline to always-on, OpenAI-compatible vLLM endpoints on independent GPU replicas — avoiding tensor-parallel overhead on PCIe GPUs.</p></div>
+        <div><h4>Architecture</h4><p>Model-agnostic by design: a config-driven router puts open-source models (served on vLLM) and managed APIs (OpenAI, Gemini, Bedrock) behind one interface with fallback chains — for ASR and LLMs alike.</p></div>
         <div><h4>Quality</h4><p>A Cohen's κ inter-rater harness measures model scoring against human auditors on every rubric parameter before changes ship.</p></div>
         <div><h4>Impact</h4><p>1.2M+ interactions a month for 18,000+ agents; relationship-manager analytics across ~60K calls/day and 10K+ RMs.</p></div>
       </div>
