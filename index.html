@@ -93,12 +93,38 @@ p + p{margin-top:14px}
 .facts p{font-size:14.5px;color:var(--muted)}
 .agents{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:28px 0 26px;position:relative}
 .ag{background:var(--node);border:1px solid var(--rule);border-radius:8px;padding:14px;position:relative}
-.ag:first-child{border-color:var(--accent)}
 .ag + .ag::before{content:"→";position:absolute;left:-21px;top:13px;color:var(--faint);font:400 14px var(--mono)}
 .ag b{display:block;font:600 14px var(--sans)}
 .ag span{display:block;margin-top:4px;font:400 12px/1.5 var(--mono);color:var(--muted)}
 .mem{grid-column:1/-1;border:1px dashed var(--rule);border-radius:8px;padding:10px 14px;font:400 12px var(--mono);color:var(--muted);text-align:center}
 .links-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+/* animated runs */
+.diagram .box,.ag,.mem{transition:stroke .35s,border-color .35s,box-shadow .35s,color .35s}
+.diagram .box.on{stroke:var(--accent);stroke-width:1.8}
+.diagram .ln.on{stroke:var(--accent);stroke-dasharray:4 3;animation:flow .5s linear infinite}
+.diagram .eval.on{stroke-width:1.8;animation:flow .5s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-7}}
+.ag.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.mem.on{border-color:var(--accent);color:var(--ink)}
+.mem-act{display:block;margin-top:4px;color:var(--accent);min-height:1.5em}
+.trace{margin:0 0 26px;background:var(--node);border:1px solid var(--rule);border-radius:10px;padding:12px 16px 14px}
+.anim[data-anim="voice"] .trace{margin-top:-8px}
+.trace-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.tbtn{font:500 11px var(--mono);letter-spacing:.06em;background:none;border:1px solid var(--rule);color:var(--muted);border-radius:999px;padding:3px 10px;cursor:pointer}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+.trace ol{list-style:none}
+.trace li{font:400 12.5px/1.6 var(--mono);color:var(--muted);padding:3px 0;opacity:.14;transition:opacity .45s,color .45s}
+.trace li.shown{opacity:1}
+.trace li.cur{color:var(--ink)}
+.trace li em{font-style:normal;color:var(--accent);display:inline-block;width:78px}
+.trace q{color:var(--ink);font-style:italic}
+.wave{display:inline-flex;gap:2px;align-items:center;height:12px;vertical-align:middle;margin-left:10px}
+.wave b{width:2px;height:35%;background:var(--accent);border-radius:1px}
+.trace li.cur .wave b{animation:wv .9s ease-in-out infinite alternate}
+@keyframes wv{from{height:15%}to{height:100%}}
+@media (prefers-reduced-motion:reduce){.live i,.diagram .ln.on,.diagram .eval.on,.trace li.cur .wave b{animation:none}}
 /* grid of systems */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
@@ -164,6 +190,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   .feature{padding:24px 20px}
   .agents{grid-template-columns:1fr 1fr;gap:12px}
   .ag + .ag::before{display:none}
+  .trace li em{display:block;width:auto}
   section{padding-top:64px}
 }
 @media (max-width:480px){ .wrap{padding:0 16px} .stat b{font-size:34px} }
@@ -247,29 +274,41 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       <h3>Call Analytics Intelligence Platform</h3>
       <p>An enterprise platform that listens to every contact-centre call and turns it into intent, sentiment, compliance flags, a 20-parameter quality score and agent-level performance trends. Around 2,000 call-hours a day, on a model-agnostic stack.</p>
 
+      <div class="anim" data-anim="voice">
       <div class="diagram" role="img" aria-label="Pipeline: telephony audio to pluggable ASR and diarization, to an LLM router over self-hosted or API models, to scoring and extraction, to analytics dashboards, with an evaluation harness checking scoring quality.">
         <svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg">
           <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ar" d="M0,0 L10,5 L0,10 z"/></marker></defs>
           <text class="lab" x="0" y="14">INGEST</text><text class="lab" x="190" y="14">SPEECH</text><text class="lab" x="380" y="14">SERVING</text><text class="lab" x="570" y="14">UNDERSTANDING</text><text class="lab" x="760" y="14">OUTPUT</text>
-          <rect class="box" x="0" y="30" width="150" height="86" rx="8"/>
+          <rect class="box node" data-s="0" x="0" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="14" y="56">Telephony audio</text><text class="t2" x="14" y="78">8 kHz · G.711</text><text class="t2" x="14" y="96">multilingual</text>
-          <rect class="box" x="190" y="30" width="150" height="86" rx="8"/>
+          <rect class="box node" data-s="1" x="190" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="204" y="56">ASR + diarization</text><text class="t2" x="204" y="78">pluggable engine</text><text class="t2" x="204" y="96">open-source or API</text>
-          <rect class="box hot" x="380" y="30" width="150" height="86" rx="8"/>
+          <rect class="box node" data-s="2" x="380" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="394" y="56">LLM router</text><text class="t2" x="394" y="78">self-hosted or API</text><text class="t2" x="394" y="96">config + fallback</text>
-          <rect class="box" x="570" y="30" width="150" height="86" rx="8"/>
+          <rect class="box node" data-s="3" x="570" y="30" width="150" height="86" rx="8"/>
           <text class="t1" x="584" y="56">Scoring + extraction</text><text class="t2" x="584" y="78">20-param rubric</text><text class="t2" x="584" y="96">intent · compliance</text>
-          <rect class="box" x="760" y="30" width="140" height="86" rx="8"/>
+          <rect class="box node" data-s="4" x="760" y="30" width="140" height="86" rx="8"/>
           <text class="t1" x="774" y="56">Analytics</text><text class="t2" x="774" y="78">agent + RM trends</text><text class="t2" x="774" y="96">WoW / MoM</text>
-          <path class="ln" d="M150,73 H186" marker-end="url(#a)"/><path class="ln" d="M340,73 H376" marker-end="url(#a)"/>
-          <path class="ln" d="M530,73 H566" marker-end="url(#a)"/><path class="ln" d="M720,73 H756" marker-end="url(#a)"/>
-          <rect class="box" x="570" y="160" width="150" height="56" rx="8"/>
+          <path class="ln node" data-s="1" d="M150,73 H186" marker-end="url(#a)"/><path class="ln node" data-s="2" d="M340,73 H376" marker-end="url(#a)"/>
+          <path class="ln node" data-s="3" d="M530,73 H566" marker-end="url(#a)"/><path class="ln node" data-s="4" d="M720,73 H756" marker-end="url(#a)"/>
+          <rect class="box node" data-s="3" x="570" y="160" width="150" height="56" rx="8"/>
           <text class="t1" x="584" y="184">Eval harness</text><text class="t2" x="584" y="203">Cohen's κ vs humans</text>
-          <path class="eval" d="M645,160 V120"/>
+          <path class="eval node" data-s="3" d="M645,160 V120"/>
           <rect class="box" x="190" y="160" width="340" height="56" rx="8" style="stroke-dasharray:3 3"/>
           <text class="t1" x="204" y="184">Governed deployment</text><text class="t2" x="204" y="203">on-prem or cloud · PII masking · RBAC</text>
           <path class="ln" d="M265,160 V120" style="stroke-dasharray:2 3"/><path class="ln" d="M455,160 V120" style="stroke-dasharray:2 3"/>
         </svg>
+      </div>
+      <div class="trace">
+        <div class="trace-head"><span class="live"><i></i>Illustrative run · one call through the pipeline</span><button class="tbtn" type="button">Pause</button></div>
+        <ol>
+          <li data-s="0"><em>ingest</em>call received · 6m 12s · stereo, 8 kHz<span class="wave" aria-hidden="true"><b style="animation-delay:-0.00s"></b><b style="animation-delay:-0.37s"></b><b style="animation-delay:-0.74s"></b><b style="animation-delay:-0.21s"></b><b style="animation-delay:-0.58s"></b><b style="animation-delay:-0.05s"></b><b style="animation-delay:-0.42s"></b><b style="animation-delay:-0.79s"></b><b style="animation-delay:-0.26s"></b><b style="animation-delay:-0.63s"></b><b style="animation-delay:-0.10s"></b><b style="animation-delay:-0.47s"></b><b style="animation-delay:-0.84s"></b><b style="animation-delay:-0.31s"></b><b style="animation-delay:-0.68s"></b><b style="animation-delay:-0.15s"></b><b style="animation-delay:-0.52s"></b><b style="animation-delay:-0.89s"></b></span></li>
+          <li data-s="1"><em>asr</em>[agent] <q>Namaste sir, main aapki kaise help kar sakta hoon?</q> [customer] <q>Card block ho gaya hai, urgent hai</q> · Hindi-English · 2 speakers</li>
+          <li data-s="2"><em>route</em>scoring task → primary model · fallback provider armed · PII masked before inference</li>
+          <li data-s="3"><em>score</em>greeting ✓ · verification ✓ · empathy ✓ · disclosure ✗ → 17/20 · compliance flag · sampled for κ audit</li>
+          <li data-s="4"><em>trend</em>agent quality WoW +4% · RM cohort dashboard refreshed</li>
+        </ol>
+      </div>
       </div>
 
       <div class="facts">
@@ -284,13 +323,25 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       <h3>IR Question Intelligence Platform</h3>
       <p>AI agents for the next earnings call. The platform predicts which questions analysts will ask, profiles each analyst's recurring themes across quarters and banks, and grounds every answer in transcripts and disclosures — then turns it all into a call-ready brief. It started as a knowledge-graph prototype; when it overfit to a single quarter, I rebuilt it as an agentic system with the graph as long-term memory and an eval harness to test generalization.</p>
 
+      <div class="anim" data-anim="ir">
       <div class="agents" aria-label="Four agents in sequence: Forecast, Analyst, Evidence, Brief, sharing a knowledge-graph memory">
-        <div class="ag"><b>Forecast</b><span>ranks likely questions from disclosures + analyst history</span></div>
-        <div class="ag"><b>Analyst</b><span>profiles each analyst's themes and follow-ups</span></div>
-        <div class="ag"><b>Evidence</b><span>grounds answers in transcripts and filings, with citations</span></div>
-        <div class="ag"><b>Brief</b><span>assembles call-ready prep material</span></div>
-        <div class="mem">Shared memory · knowledge graph of analysts, topics and open threads across FY22 → today</div>
+        <div class="ag node" data-s="0"><b>Forecast</b><span>ranks likely questions from disclosures + analyst history</span></div>
+        <div class="ag node" data-s="1"><b>Analyst</b><span>profiles each analyst's themes and follow-ups</span></div>
+        <div class="ag node" data-s="2"><b>Evidence</b><span>grounds answers in transcripts and filings, with citations</span></div>
+        <div class="ag node" data-s="3"><b>Brief</b><span>assembles call-ready prep material</span></div>
+        <div class="mem">Shared memory · knowledge graph of analysts, topics and open threads across FY22 → today<span class="mem-act"></span></div>
       </div>
+      <div class="trace">
+        <div class="trace-head"><span class="live"><i></i>Illustrative run · preparing one question</span><button class="tbtn" type="button">Pause</button></div>
+        <ol>
+          <li data-s="0"><em>forecast</em><q>How do you see credit costs trending in unsecured retail next quarter?</q> · ranked #1</li>
+          <li data-s="1"><em>analyst</em>Analyst A · raised asset quality in 3 of the last 4 calls, across 2 banks · follow-up likely</li>
+          <li data-s="2"><em>evidence</em>grounded in last quarter's transcript + investor presentation · 2 citations</li>
+          <li data-s="3"><em>brief</em>added to the call-prep pack with a suggested answer and supporting data points</li>
+        </ol>
+      </div>
+      </div>
+
 
       <div class="facts">
         <div><h4>Evaluation</h4><p>Held-out quarters as the test set, question-recall scored against what analysts actually asked, and a backtesting loop for every weight change.</p></div>
@@ -441,5 +492,40 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   </div>
 </footer>
 
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var memText = ['read · disclosures + past questions','read · analyst history across banks','read · transcript + filing index','write · open thread for next quarter'];
+  document.querySelectorAll('[data-anim]').forEach(function(root){
+    var kind = root.getAttribute('data-anim');
+    var nodes = root.querySelectorAll('.node[data-s]');
+    var lines = root.querySelectorAll('.trace li');
+    var btn = root.querySelector('.tbtn');
+    var mem = root.querySelector('.mem'), memAct = root.querySelector('.mem-act');
+    var n = lines.length, i = -1, timer = null, visible = false, paused = false;
+    function render(upto, active){
+      nodes.forEach(function(el){ el.classList.toggle('on', +el.getAttribute('data-s') === active); });
+      lines.forEach(function(el){ var s = +el.getAttribute('data-s'); el.classList.toggle('shown', s <= upto); el.classList.toggle('cur', s === active); });
+      if (mem){ mem.classList.toggle('on', active >= 0); memAct.textContent = active >= 0 ? memText[active] : ''; }
+    }
+    function step(){
+      timer = null; if (paused || !visible) return;
+      i++;
+      if (i < n){ render(i, i); timer = setTimeout(step, 1900); }
+      else if (i === n){ render(n - 1, -1); timer = setTimeout(step, 2600); }
+      else { i = -1; render(-1, -1); timer = setTimeout(step, 600); }
+    }
+    if (reduce){ render(n - 1, -1); if (btn) btn.hidden = true; return; }
+    render(-1, -1);
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible && !timer && !paused) step(); }, {threshold: .35}).observe(root);
+    } else { visible = true; step(); }
+    btn.addEventListener('click', function(){
+      paused = !paused; btn.textContent = paused ? 'Play' : 'Pause';
+      if (paused){ clearTimeout(timer); timer = null; } else if (!timer) step();
+    });
+  });
+})();
+</script>
 </body>
 </html>
