@@ -91,6 +91,14 @@ p + p{margin-top:14px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--rule);padding-top:22px}
 .facts h4{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
 .facts p{font-size:14.5px;color:var(--muted)}
+.agents{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:28px 0 26px;position:relative}
+.ag{background:var(--node);border:1px solid var(--rule);border-radius:8px;padding:14px;position:relative}
+.ag:first-child{border-color:var(--accent)}
+.ag + .ag::before{content:"→";position:absolute;left:-21px;top:13px;color:var(--faint);font:400 14px var(--mono)}
+.ag b{display:block;font:600 14px var(--sans)}
+.ag span{display:block;margin-top:4px;font:400 12px/1.5 var(--mono);color:var(--muted)}
+.mem{grid-column:1/-1;border:1px dashed var(--rule);border-radius:8px;padding:10px 14px;font:400 12px var(--mono);color:var(--muted);text-align:center}
+.links-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
 /* grid of systems */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
@@ -154,6 +162,8 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   .grid,.pubs,.principles,.edu,.skills,.facts{grid-template-columns:1fr}
   .now li,.role{grid-template-columns:1fr;gap:4px}
   .feature{padding:24px 20px}
+  .agents{grid-template-columns:1fr 1fr;gap:12px}
+  .ag + .ag::before{display:none}
   section{padding-top:64px}
 }
 @media (max-width:480px){ .wrap{padding:0 16px} .stat b{font-size:34px} }
@@ -220,6 +230,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       <ul class="now">
         <li><div class="tag">INFERENCE</div><div><h3>Throughput, not latency</h3><p>Pushing calls-per-day capacity on a fixed 4×A10G budget — independent vLLM replicas, prefix-cache reuse, length-bucketed batching and KV-cache offload experiments.</p></div></li>
         <li><div class="tag">SPEECH</div><div><h3>Indic telephony ASR</h3><p>Benchmarking and fine-tuning ASR for 8 kHz, code-switched call audio: IndicConformer, Whisper large-v3 and ARTPARK-IISc's SraVaani, plus joint ASR + diarization models.</p></div></li>
+        <li><div class="tag">AGENTS</div><div><h3>Agents for the next earnings call</h3><p>Taking the <a href="https://ir-agentic-scanner.vercel.app/">IR Question Intelligence Platform</a> across more banks — forecasting analyst questions, with held-out-quarter evals to prove it generalizes.</p></div></li>
         <li><div class="tag">AGENTS</div><div><h3>Agentic workflows for banking ops</h3><p>Text-to-SQL, email triage and risk &amp; compliance agents — with the harness engineering, observability and evals that make agents safe to ship.</p></div></li>
         <li><div class="tag">TEACHING</div><div><h3>Architect-level curricula</h3><p>Expanding two open, interactive guides on agentic AI and RAG architecture, written from what actually breaks in production.</p></div></li>
       </ul>
@@ -266,6 +277,28 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
         <div><h4>Quality</h4><p>A Cohen's κ inter-rater harness measures model scoring against human auditors on every rubric parameter before changes ship.</p></div>
         <div><h4>Impact</h4><p>1.2M+ interactions a month for 18,000+ agents; relationship-manager analytics across ~60K calls/day and 10K+ RMs.</p></div>
       </div>
+    </article>
+
+    <article class="feature">
+      <div class="kicker">Agentic AI · Investor Relations · 2026</div>
+      <h3>IR Question Intelligence Platform</h3>
+      <p>AI agents for the next earnings call. The platform predicts which questions analysts will ask, profiles each analyst's recurring themes across quarters and banks, and grounds every answer in transcripts and disclosures — then turns it all into a call-ready brief. It started as a knowledge-graph prototype; when it overfit to a single quarter, I rebuilt it as an agentic system with the graph as long-term memory and an eval harness to test generalization.</p>
+
+      <div class="agents" aria-label="Four agents in sequence: Forecast, Analyst, Evidence, Brief, sharing a knowledge-graph memory">
+        <div class="ag"><b>Forecast</b><span>ranks likely questions from disclosures + analyst history</span></div>
+        <div class="ag"><b>Analyst</b><span>profiles each analyst's themes and follow-ups</span></div>
+        <div class="ag"><b>Evidence</b><span>grounds answers in transcripts and filings, with citations</span></div>
+        <div class="ag"><b>Brief</b><span>assembles call-ready prep material</span></div>
+        <div class="mem">Shared memory · knowledge graph of analysts, topics and open threads across FY22 → today</div>
+      </div>
+
+      <div class="facts">
+        <div><h4>Evaluation</h4><p>Held-out quarters as the test set, question-recall scored against what analysts actually asked, and a backtesting loop for every weight change.</p></div>
+        <div><h4>Operations</h4><p>Continual learning with logged proposals, and an audit log of every LLM call across providers.</p></div>
+        <div><h4>Coverage</h4><p>Live workspaces for Axis Bank, Kotak Mahindra and IndusInd, with a repeatable pipeline to add more banks.</p></div>
+      </div>
+      <div class="chips" style="margin-top:22px"><span>LangGraph</span><span>FastAPI</span><span>Hybrid search</span><span>Knowledge graph</span><span>OpenAI · Gemini · Groq</span></div>
+      <div class="links-row"><a class="btn primary" href="https://ir-agentic-scanner.vercel.app/">Open the live demo →</a><a class="btn" href="https://github.com/Mrjaggu/IR-Agentic-Scanner">View code on GitHub</a></div>
     </article>
 
     <div class="grid">
