@@ -289,7 +289,52 @@ nav a.nav-book:hover{background:var(--accent);color:#fff}
 .s-go{grid-row:1/3;grid-column:3;color:var(--faint);transition:transform .2s,color .2s}
 .sess:hover .s-name,.sess:hover .s-go{color:var(--accent)} .sess:hover .s-go{transform:translateX(3px)}
 @media (max-width:820px){ .sessions{grid-template-columns:1fr} }
+/* ===== freelance stories ===== */
+.story .lnk{fill:none;stroke:var(--rule);stroke-width:2;stroke-linecap:round;transition:stroke .3s}
+.story .lnk.on{stroke:var(--accent);stroke-dasharray:5 4;animation:flowf .45s linear infinite}
+.story .lnk.rev.on{animation:flowr .45s linear infinite}
+@keyframes flowf{to{stroke-dashoffset:-9}} @keyframes flowr{to{stroke-dashoffset:9}}
+.story .hair circle{fill:var(--hair)}
+.story .talk .mouth{opacity:0}
+.story .talk .mouth-o{opacity:1;animation:talk .22s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.story .pipe.on,.story .card.on{stroke:var(--accent)}
+.story .eq{fill:#8fd8c9;transform-box:fill-box;transform-origin:bottom;transform:scaleY(.25)}
+.story .talk .eq{animation:eqa .28s ease-in-out infinite alternate} .story .talk .eq:nth-of-type(2){animation-delay:.1s} .story .talk .eq:nth-of-type(3){animation-delay:.2s}
+@keyframes eqa{to{transform:scaleY(1)}}
+.story .bot-rx.talk .ant-ball{fill:var(--accent)}
+.story .hdr{font:500 10.5px var(--mono);letter-spacing:.1em;fill:var(--faint)}
+.story .state{font:400 11.5px var(--mono);fill:var(--faint);transition:fill .3s} .story .state.on{fill:var(--ink)}
+.story .barge,.story .card-st,.story .attach,.story .rec-chip,.story .sub,.story .rec2{opacity:0;transition:opacity .35s}
+.story .barge.show,.story .card-st.show,.story .attach.show,.story .rec-chip.show,.story .sub.show,.story .rec2.on{opacity:1}
+.story .barge rect{fill:var(--accent-soft);stroke:var(--accent)} .story .barge text{font:500 10.5px var(--mono);fill:var(--accent);text-anchor:middle}
+.story .card-st{font:500 11px var(--mono);fill:#2f9a6a}
+.story .slot rect{fill:var(--node);stroke:var(--rule);stroke-width:1.2;transition:fill .3s,stroke .3s}
+.story .slot text{font:500 11px var(--mono);fill:var(--muted);text-anchor:middle}
+.story .slot.on rect{fill:var(--accent-soft);stroke:var(--accent)} .story .slot.on text{fill:var(--accent)}
+.story .slot.picked rect{fill:#3fb27f;stroke:#3fb27f} .story .slot.picked text{fill:#fff}
+.story .trans-bg{fill:var(--surface);stroke:var(--rule);stroke-width:1.2}
+.story .tr{font:400 13px var(--sans);fill:var(--muted);opacity:.13;transition:opacity .4s}
+.story .tr.show{opacity:1} .story .tr .who{font-weight:600;fill:var(--ink)}
+.story .tr.chip{font:400 12px var(--mono);fill:var(--accent)} .story .flag-t{font:500 11.5px var(--mono);fill:var(--accent)}
+.story .rtc{font:600 10px var(--mono);fill:var(--muted);text-anchor:middle}
+.story .wdot{fill:var(--rule)}
+.story .laptop{fill:#34323a} .story .live-dot{fill:#6b6873;transition:fill .3s} .story .live-dot.on{fill:#3fb27f}
+.story .tile{fill:#1d2533;transition:stroke .3s} .story .tile-me.speaking{stroke:var(--accent);stroke-width:2.5}
+.story .vid{opacity:.18;transition:opacity .6s} .story .vid.show{opacity:1}
+.story .tag-t{font:500 9.5px var(--mono);fill:#fff;text-anchor:middle}
+.story .sub rect{fill:rgba(0,0,0,.62)} .story .sub text{font:500 10.5px var(--sans);fill:#fff;text-anchor:middle}
+.story .ear{fill:var(--accent)} .story .av.talk .ear{animation:blink .6s infinite}
+.story .rec2 circle{fill:#d63b3b;animation:blink 1s infinite} .story .rec2 text{font:500 9.5px var(--mono);fill:var(--muted)}
+.story .rl{font:400 11px var(--mono);fill:var(--muted)}
+.story .rbar-bg{fill:var(--rule)}
+.story .rbar{fill:var(--accent);transform-box:fill-box;transform-origin:left;transform:scaleX(0);transition:transform 1.1s ease-out}
+.story .report.fill .rbar{transform:scaleX(var(--v))}
+.story .report.fill > .ico{stroke:var(--accent)}
+.story .rec-chip rect{fill:#3fb27f} .story .rec-chip text{font:600 11px var(--mono);fill:#fff;text-anchor:middle}
+.story .b-judge .bhead,.story .b-judge .bbody{stroke-width:1.3}
+@media (prefers-reduced-motion:reduce){ .story *{animation:none!important;transition:none!important} }
 /* grid of systems */
+
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
 .card .kicker{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
@@ -368,6 +413,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
     <nav>
       <a href="#now">Now</a>
       <a href="#systems">Systems</a>
+      <a href="#freelance">Freelance</a>
       <a href="#writing">Writing</a>
       <a href="#experience">Experience</a>
       <a href="#work-with-me">Work with me</a>
@@ -769,9 +815,274 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
     </div>
   </section>
 
+
+  <!-- FREELANCE -->
+  <section id="freelance">
+    <div class="sec-head"><div class="sec-num">04 · Client work</div><h2>Freelance projects</h2></div>
+    <div class="body prose" style="margin-bottom:36px"><p>Alongside my role at the bank, I build real-time voice and video agents for clients — the same production discipline, applied to conversations that happen live. <strong>Both projects below were built end to end on Pipecat.</strong></p></div>
+
+    <article class="feature">
+      <div class="kicker">Freelance · Healthcare · Voice AI</div>
+      <h3>AI voice receptionist for clinics</h3>
+      <p>A phone agent that answers a clinic's calls around the clock. It books, reschedules and cancels appointments, answers questions about timings, fees and location, sends confirmations and reminders, and hands the call to staff when a human is needed. Built on Pipecat as a fully streaming pipeline, so the conversation feels natural — even when patients interrupt.</p>
+
+      <div class="scene ir-scene story" data-story="doctor">
+        <div class="scene-frame">
+        <svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated story: a patient calls a clinic; the call reaches a Pipecat voice pipeline with voice activity detection, speech-to-text, an LLM and text-to-speech; the agent checks the clinic calendar, handles an interruption, books the slot in patient records and sends an SMS confirmation.">
+          <!-- links -->
+          <path class="lnk in" d="M134,146 H226"/><path class="lnk rev out" d="M134,160 H226"/>
+          <path class="lnk in" d="M274,146 H328"/><path class="lnk rev out" d="M274,160 H328"/>
+          <path class="lnk t-cal" d="M642,75 H698"/><path class="lnk t-db" d="M642,145 H698"/><path class="lnk t-sms" d="M642,205 H698"/>
+
+          <!-- patient -->
+          <g class="pat">
+            <path d="M50,204 C50,164 62,144 90,141 C118,144 130,164 130,204 Z" fill="#3f8f6a"/>
+            <rect x="84" y="124" width="12" height="14" class="skin"/>
+            <circle cx="90" cy="108" r="24" class="skin"/>
+            <g class="hair"><circle cx="70" cy="93" r="9"/><circle cx="80" cy="85" r="10"/><circle cx="93" cy="83" r="10"/><circle cx="105" cy="88" r="9"/><circle cx="112" cy="98" r="7"/><circle cx="67" cy="104" r="6"/></g>
+            <g class="eye"><ellipse cx="81" cy="112" rx="3.4" ry="4.4" class="iris"/><circle cx="82.2" cy="110.4" r="1.2" class="glint"/></g>
+            <g class="eye"><ellipse cx="99" cy="112" rx="3.4" ry="4.4" class="iris"/><circle cx="100.2" cy="110.4" r="1.2" class="glint"/></g>
+            <ellipse cx="75" cy="119" rx="3.2" ry="1.7" class="blush"/><ellipse cx="105" cy="119" rx="3.2" ry="1.7" class="blush"/>
+            <path class="mouth" d="M86,123 Q90,126.5 94,123"/><ellipse class="mouth-o" cx="90" cy="124" rx="3" ry="2.4"/>
+            <rect x="58" y="100" width="9" height="20" rx="2" class="phone"/><ellipse cx="63" cy="121" rx="5" ry="4" class="skin"/>
+          </g>
+          <g class="bubble note"><rect x="14" y="16" width="156" height="30" rx="10"/><path d="M82,45 L90,56 L98,45 Z"/><text x="92" y="36">✓ Confirmed · Thu 11:30</text></g>
+
+          <!-- telephony -->
+          <path class="ico" d="M236,204 L250,100 L264,204 M240,176 L260,176 M243,150 L257,150 M246,126 L254,126 M236,204 L257,150 M264,204 L243,150"/>
+          <circle cx="250" cy="94" r="4.5" class="dot"/>
+
+          <!-- pipeline -->
+          <rect x="330" y="40" width="312" height="192" rx="14" class="ico fillb pipe"/>
+          <text class="t-in" x="346" y="62">Pipecat voice pipeline</text>
+          <g class="bot-rx">
+            <line x1="392" y1="80" x2="392" y2="72" class="ant"/><circle cx="392" cy="69" r="4" class="ant-ball"/>
+            <path class="headset" d="M362,102 C362,74 422,74 422,102"/>
+            <rect x="366" y="80" width="52" height="40" rx="12" class="bhead"/>
+            <rect x="373" y="88" width="38" height="22" rx="9" class="visor"/>
+            <circle cx="384" cy="99" r="3" class="beye"/><circle cx="400" cy="99" r="3" class="beye"/>
+            <path class="headset thin" d="M364,106 Q366,118 378,118"/>
+            <rect x="374" y="124" width="36" height="30" rx="8" class="bbody"/>
+            <rect class="eq" x="382" y="130" width="4" height="18" rx="1.5"/><rect class="eq" x="390" y="130" width="4" height="18" rx="1.5"/><rect class="eq" x="398" y="130" width="4" height="18" rx="1.5"/>
+          </g>
+          <text class="hdr" x="444" y="84">DIALOG STATE</text>
+          <text class="state" id="d-intent" x="444" y="104" data-t0="intent: —">intent: —</text>
+          <text class="state" id="d-spec" x="444" y="122" data-t0="specialty: —">specialty: —</text>
+          <text class="state" id="d-slot" x="444" y="140" data-t0="slot: —">slot: —</text>
+          <g class="barge"><rect x="444" y="148" width="150" height="18" rx="9"/><text x="519" y="161">barge-in · TTS stopped</text></g>
+          <g class="pill p-vad"><rect x="346" y="172" width="64" height="26" rx="13"/><text x="378" y="189">VAD</text></g>
+          <g class="pill p-stt"><rect x="418" y="172" width="64" height="26" rx="13"/><text x="450" y="189">STT</text></g>
+          <g class="pill p-llm"><rect x="490" y="172" width="64" height="26" rx="13"/><text x="522" y="189">LLM</text></g>
+          <g class="pill p-tts"><rect x="562" y="172" width="64" height="26" rx="13"/><text x="594" y="189">TTS</text></g>
+          <text class="ai-line" x="346" y="220">streaming · interruptible · tool-calling</text>
+
+          <!-- tools -->
+          <rect x="700" y="40" width="240" height="70" rx="10" class="ico fillb card c-cal"/>
+          <rect x="714" y="52" width="26" height="24" rx="4" class="ico"/><path class="ico thin" d="M714,60 H740 M722,48 V56 M732,48 V56"/>
+          <text class="t-in" x="752" y="66">Clinic calendar</text>
+          <g class="slot s1"><rect x="752" y="78" width="80" height="22" rx="11"/><text x="792" y="93">Thu 11:30</text></g>
+          <g class="slot s2"><rect x="840" y="78" width="80" height="22" rx="11"/><text x="880" y="93">Fri 16:00</text></g>
+          <rect x="700" y="120" width="240" height="50" rx="10" class="ico fillb card c-db"/>
+          <ellipse cx="727" cy="133" rx="12" ry="4" class="ico"/><path class="ico" d="M715,133 V155 A12,4 0 0 0 739,155 V133"/>
+          <text class="t-in" x="752" y="141">Patient records</text><text class="card-st c-db-st" x="752" y="159">booking saved ✓</text>
+          <rect x="700" y="180" width="240" height="50" rx="10" class="ico fillb card c-sms"/>
+          <path class="ico" d="M714,192 H740 V208 H724 L718,214 V208 H714 Z"/>
+          <text class="t-in" x="752" y="201">SMS / WhatsApp</text><text class="card-st c-sms-st" x="752" y="219">confirmation sent ✓</text>
+
+          <text class="lbl1" x="90" y="256" text-anchor="middle">Patient</text><text class="lbl2" x="90" y="272" text-anchor="middle">calls the clinic</text>
+          <text class="lbl1" x="250" y="256" text-anchor="middle">Telephony</text><text class="lbl2" x="250" y="272" text-anchor="middle">SIP · WebSocket</text>
+          <text class="lbl1" x="486" y="256" text-anchor="middle">Voice agent</text><text class="lbl2" x="486" y="272" text-anchor="middle">VAD → STT → LLM → TTS</text>
+          <text class="lbl1" x="820" y="256" text-anchor="middle">Tools</text><text class="lbl2" x="820" y="272" text-anchor="middle">calendar · records · SMS</text>
+
+          <!-- transcript -->
+          <rect x="20" y="290" width="920" height="142" rx="12" class="trans-bg"/>
+          <text class="hdr" x="38" y="312">LIVE TRANSCRIPT</text>
+          <text class="tr t0" x="38" y="336"><tspan class="who">Patient</tspan>  Hi, I need to see a cardiologist this week.</text>
+          <text class="tr t1 chip" x="58" y="354">⚙ check_availability(cardiology, this_week) → Thu 11:30 · Fri 16:00</text>
+          <text class="tr t2" x="922" y="372" text-anchor="end"><tspan class="who">Agent</tspan>  Our cardiologist is free Thursday 11:30 or Friday 4 pm. Which suits you?</text>
+          <text class="tr t3" x="38" y="390"><tspan class="who">Patient</tspan>  Thursday, please!  <tspan class="flag-t">↯ interrupted the agent</tspan></text>
+          <text class="tr t4 chip" x="58" y="408">⚙ book_slot(Thu 11:30) ✓   ⚙ send_sms(confirmation) ✓</text>
+          <text class="tr t5" x="922" y="424" text-anchor="end"><tspan class="who">Agent</tspan>  Done! You'll get an SMS confirmation in a moment.</text>
+        </svg>
+        </div>
+        <div class="scene-cap">
+          <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <ol class="caps">
+            <li><b>Patient calls</b> Voice activity detection and streaming speech-to-text pick up the request as it's spoken.</li>
+            <li><b>LLM + tools</b> The agent understands the intent and checks the clinic calendar for open slots.</li>
+            <li><b>Agent replies</b> Text-to-speech streams the answer back in a natural voice.</li>
+            <li><b>Barge-in</b> The patient interrupts; the agent stops talking instantly and listens, like a good receptionist.</li>
+            <li><b>Booking</b> The slot is saved in patient records and an SMS confirmation goes out.</li>
+            <li><b>Done</b> One short call, no hold music, available 24/7 — with a human handoff when needed.</li>
+          </ol>
+          <button class="tbtn" type="button">Pause</button>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div><h4>Real-time pipeline</h4><p>Streaming VAD → STT → LLM → TTS in Pipecat, with barge-in handling and latency tuned stage by stage across speech and LLM providers.</p></div>
+        <div><h4>Tool use</h4><p>Function calls into the clinic calendar, patient records and SMS/WhatsApp, with the agent confirming details before anything is booked.</p></div>
+        <div><h4>Beyond booking</h4><p>Reschedules, cancellations, reminders, FAQs on timings, fees and location, and a clean handoff to clinic staff.</p></div>
+      </div>
+      <div class="chips" style="margin-top:22px"><span>Pipecat</span><span>Streaming STT</span><span>LLM function calling</span><span>TTS</span><span>SIP / WebSocket</span><span>Python</span></div>
+    </article>
+
+
+    <article class="feature">
+      <div class="kicker">Freelance · HR tech · Multimodal agents</div>
+      <h3>AI interviewer: real-time voice + video</h3>
+      <p>A multi-agent system that runs live job interviews. An AI interviewer talks with the candidate over video, adapts each question to their resume and answers, and a panel of LLM judges scores every response in parallel. Recruiters get a structured report with the full recording and transcript. It picks up a problem I first worked on in 2019 at Analysed.in — rebuilt for the LLM era.</p>
+
+      <div class="scene ir-scene story" data-story="interview">
+        <div class="scene-frame">
+        <svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated story: a candidate joins a browser video call over WebRTC; a planner agent picks questions from the resume and job description; an AI interviewer avatar asks with live captions; the candidate answers; three judge agents score in parallel and a follow-up is generated; a recruiter report with scores and the recording is produced.">
+          <!-- links -->
+          <path class="lnk j-in" d="M196,140 H224"/><path class="lnk rev j-out" d="M196,154 H224"/>
+          <path class="lnk j-in" d="M292,140 H308"/><path class="lnk rev j-out" d="M292,154 H308"/>
+          <path class="lnk j-ag" d="M602,128 H628"/><path class="lnk rev j-ag" d="M602,142 H628"/>
+
+          <!-- candidate -->
+          <g class="cand">
+            <ellipse cx="57" cy="118" rx="7" ry="15" class="hair2"/>
+            <path d="M40,204 C40,164 52,144 80,141 C108,144 120,164 120,204 Z" fill="#4a6fa5"/>
+            <path d="M72,146 L74,166 M88,146 L86,166" stroke="#dfe6f2" stroke-width="1.6"/>
+            <rect x="74" y="124" width="12" height="14" class="skin"/>
+            <circle cx="80" cy="108" r="24" class="skin"/>
+            <path class="hair2" d="M56,108 C53,80 70,76 82,78 C98,78 108,90 104,108 C99,95 90,90 80,93 C70,91 60,98 56,108 Z"/>
+            <g class="eye"><ellipse cx="71" cy="112" rx="3.4" ry="4.6" class="iris"/><circle cx="72.2" cy="110.3" r="1.3" class="glint"/></g>
+            <g class="eye"><ellipse cx="89" cy="112" rx="3.4" ry="4.6" class="iris"/><circle cx="90.2" cy="110.3" r="1.3" class="glint"/></g>
+            <ellipse cx="65" cy="119" rx="3.2" ry="1.7" class="blush"/><ellipse cx="95" cy="119" rx="3.2" ry="1.7" class="blush"/>
+            <path class="mouth" d="M76,123 Q80,126.5 84,123"/><ellipse class="mouth-o" cx="80" cy="124" rx="3" ry="2.4"/>
+          </g>
+          <rect x="128" y="126" width="60" height="46" rx="4" class="laptop"/><circle cx="158" cy="149" r="4" fill="#55535c"/>
+          <circle cx="181" cy="133" r="3" class="live-dot"/>
+          <rect x="120" y="172" width="76" height="5" rx="2" class="laptop"/>
+          <rect x="20" y="200" width="190" height="8" rx="4" class="desk"/>
+
+          <!-- webrtc -->
+          <path class="ico fillb" d="M236,162 C222,162 222,143 236,142 C238,128 256,124 264,134 C270,126 288,130 286,145 C298,147 296,162 284,162 Z"/>
+          <text class="rtc" x="260" y="154">RTC</text>
+
+          <!-- video room -->
+          <rect x="310" y="36" width="292" height="200" rx="10" class="ico fillb"/>
+          <path class="ico thin" d="M310,56 H602"/>
+          <circle cx="324" cy="46" r="3.2" class="wdot"/><circle cx="335" cy="46" r="3.2" class="wdot"/><circle cx="346" cy="46" r="3.2" class="wdot"/>
+          <text class="hdr" x="362" y="50">INTERVIEW · LIVE</text>
+          <g class="rec2"><circle cx="560" cy="46" r="3.6"/><text x="568" y="50">REC</text></g>
+          <g class="vid">
+            <rect x="320" y="64" width="196" height="164" rx="6" class="tile"/>
+            <g class="av">
+              <path d="M372,228 C372,198 390,184 418,182 C446,184 464,198 464,228 Z" fill="#5a4a8a"/>
+              <path d="M410,184 L418,196 L426,184 Z" fill="#e9e4f5"/>
+              <rect x="412" y="164" width="12" height="18" class="skin"/>
+              <circle cx="418" cy="146" r="26" class="skin"/>
+              <path d="M391,148 C388,116 408,107 422,109 C441,110 451,124 446,148 C440,132 430,126 419,130 C407,124 396,133 391,148 Z" fill="#2e8c8c"/>
+              <path d="M392,140 L386,170 L399,152 Z" fill="#2e8c8c"/><path d="M445,140 L451,168 L439,152 Z" fill="#2e8c8c"/>
+              <g class="eye"><ellipse cx="408" cy="151" rx="3.4" ry="4.8" class="iris"/><circle cx="409.3" cy="149.2" r="1.3" class="glint"/></g>
+              <g class="eye"><ellipse cx="428" cy="151" rx="3.4" ry="4.8" class="iris"/><circle cx="429.3" cy="149.2" r="1.3" class="glint"/></g>
+              <ellipse cx="402" cy="159" rx="3.2" ry="1.7" class="blush"/><ellipse cx="434" cy="159" rx="3.2" ry="1.7" class="blush"/>
+              <path class="mouth" d="M414,162 Q418,165.5 422,162"/><ellipse class="mouth-o" cx="418" cy="163" rx="3" ry="2.4"/>
+              <circle cx="445" cy="152" r="3.6" class="ear"/>
+            </g>
+            <rect x="326" y="70" width="88" height="16" rx="8" fill="rgba(0,0,0,.4)"/><text class="tag-t" x="370" y="81">AI interviewer</text>
+            <g class="sub"><rect x="328" y="202" width="180" height="20" rx="4"/><text id="i-sub" x="418" y="216" data-t0="Describe a RAG system you built.">Describe a RAG system you built.</text></g>
+            <rect x="524" y="64" width="70" height="58" rx="6" class="tile tile-me"/>
+            <path d="M540,122 C540,110 548,104 559,103 C570,104 578,110 578,122 Z" fill="#4a6fa5"/>
+            <circle cx="559" cy="92" r="11" class="skin"/>
+            <path d="M548,92 C547,79 556,77 560,78 C568,78 572,84 570,92 C566,86 561,85 559,86 C555,85 550,87 548,92 Z" class="hair2"/>
+            <text class="tag-t" x="559" y="136" style="fill:var(--muted)">you</text>
+          </g>
+
+          <!-- agents -->
+          <rect x="630" y="36" width="310" height="200" rx="14" class="ico fillb harness"/>
+          <text class="t-in" x="646" y="58">Pipecat multi-agent</text>
+          <g class="bot b-plan"><g class="bot-body">
+              <line x1="676" y1="94" x2="676" y2="84" class="ant"/><circle cx="676" cy="81" r="3.6" class="ant-ball"/>
+              <rect x="656" y="94" width="40" height="28" rx="10" class="bhead"/>
+              <rect x="662" y="100" width="28" height="15" rx="7" class="visor"/>
+              <circle cx="670" cy="107.5" r="2.6" class="beye"/><circle cx="682" cy="107.5" r="2.6" class="beye"/>
+              <rect x="662" y="126" width="28" height="22" rx="6" class="bbody"/>
+              <text x="676" y="141" class="bl">P</text></g>
+              <text x="676" y="168" class="bname">Planner</text></g>
+          <g class="bot b-int"><g class="bot-body">
+              <line x1="750" y1="94" x2="750" y2="84" class="ant"/><circle cx="750" cy="81" r="3.6" class="ant-ball"/>
+              <rect x="730" y="94" width="40" height="28" rx="10" class="bhead"/>
+              <rect x="736" y="100" width="28" height="15" rx="7" class="visor"/>
+              <circle cx="744" cy="107.5" r="2.6" class="beye"/><circle cx="756" cy="107.5" r="2.6" class="beye"/>
+              <rect x="736" y="126" width="28" height="22" rx="6" class="bbody"/>
+              <text x="750" y="141" class="bl">I</text></g>
+              <text x="750" y="168" class="bname">Interviewer</text></g>
+          <g class="bot b-judge"><g class="bot-body"><line x1="809" y1="98" x2="809" y2="90" class="ant"/><circle cx="809" cy="88" r="2.6" class="ant-ball"/>
+              <rect x="801" y="98" width="16" height="15" rx="5" class="bhead"/><rect x="803.5" y="102" width="11" height="7" rx="3.5" class="visor"/>
+              <rect x="803" y="116" width="12" height="16" rx="4" class="bbody"/><line x1="826" y1="98" x2="826" y2="90" class="ant"/><circle cx="826" cy="88" r="2.6" class="ant-ball"/>
+              <rect x="818" y="98" width="16" height="15" rx="5" class="bhead"/><rect x="820.5" y="102" width="11" height="7" rx="3.5" class="visor"/>
+              <rect x="820" y="116" width="12" height="16" rx="4" class="bbody"/><line x1="843" y1="98" x2="843" y2="90" class="ant"/><circle cx="843" cy="88" r="2.6" class="ant-ball"/>
+              <rect x="835" y="98" width="16" height="15" rx="5" class="bhead"/><rect x="837.5" y="102" width="11" height="7" rx="3.5" class="visor"/>
+              <rect x="837" y="116" width="12" height="16" rx="4" class="bbody"/><text x="826" y="144" class="bl">×3</text></g>
+              <text x="826" y="168" class="bname">Judges</text></g>
+          <g class="bot b-rec"><g class="bot-body">
+              <line x1="902" y1="94" x2="902" y2="84" class="ant"/><circle cx="902" cy="81" r="3.6" class="ant-ball"/>
+              <rect x="882" y="94" width="40" height="28" rx="10" class="bhead"/>
+              <rect x="888" y="100" width="28" height="15" rx="7" class="visor"/>
+              <circle cx="896" cy="107.5" r="2.6" class="beye"/><circle cx="908" cy="107.5" r="2.6" class="beye"/>
+              <rect x="888" y="126" width="28" height="22" rx="6" class="bbody"/>
+              <text x="902" y="141" class="bl">R</text></g>
+              <text x="902" y="168" class="bname">Recorder</text></g>
+          <text class="ai-line" id="i-out" x="646" y="214" data-t0="4 agent roles · one conversation">4 agent roles · one conversation</text>
+
+          <text class="lbl1" x="100" y="256" text-anchor="middle">Candidate</text><text class="lbl2" x="100" y="272" text-anchor="middle">joins from the browser</text>
+          <text class="lbl1" x="260" y="256" text-anchor="middle">WebRTC</text><text class="lbl2" x="260" y="272" text-anchor="middle">live audio + video</text>
+          <text class="lbl1" x="456" y="256" text-anchor="middle">Interview room</text><text class="lbl2" x="456" y="272" text-anchor="middle">AI avatar · live captions</text>
+          <text class="lbl1" x="785" y="256" text-anchor="middle">Agent team</text><text class="lbl2" x="785" y="272" text-anchor="middle">plan · ask · judge · record</text>
+
+          <!-- log -->
+          <rect x="20" y="290" width="592" height="142" rx="12" class="trans-bg"/>
+          <text class="hdr" x="38" y="312">INTERVIEW LOG</text>
+          <text class="tr t0" x="38" y="336"><tspan class="who">Planner</tspan>  resume + job description → Q1: Describe a RAG system you built.</text>
+          <text class="tr t1" x="38" y="356"><tspan class="who">Interviewer</tspan>  asks Q1 · voice + avatar video + live captions</text>
+          <text class="tr t2" x="38" y="376"><tspan class="who">Candidate</tspan>  “Hybrid retrieval — BM25 plus dense vectors, then a reranker…”</text>
+          <text class="tr t3 chip" x="38" y="396">Judges ×3  depth 4/5 · clarity 5/5 · relevance 4/5 · scored in parallel</text>
+          <text class="tr t4" x="38" y="416"><tspan class="who">Planner</tspan>  follow-up → How did you evaluate retrieval quality?</text>
+
+          <!-- report -->
+          <g class="report">
+            <rect x="630" y="290" width="310" height="142" rx="12" class="ico fillb"/>
+            <text class="t-in" x="646" y="312">Interview report</text>
+            <text class="rl" x="646" y="336">Technical depth</text><rect x="770" y="329" width="150" height="8" rx="4" class="rbar-bg"/><rect x="770" y="329" width="150" height="8" rx="4" class="rbar" style="--v:.82"/>
+            <text class="rl" x="646" y="356">Communication</text><rect x="770" y="349" width="150" height="8" rx="4" class="rbar-bg"/><rect x="770" y="349" width="150" height="8" rx="4" class="rbar" style="--v:.92"/>
+            <text class="rl" x="646" y="376">Problem solving</text><rect x="770" y="369" width="150" height="8" rx="4" class="rbar-bg"/><rect x="770" y="369" width="150" height="8" rx="4" class="rbar" style="--v:.74"/>
+            <g class="rec-chip"><rect x="646" y="388" width="164" height="22" rx="11"/><text x="728" y="403">✓ Recommend: next round</text></g>
+            <text class="attach lbl2" x="646" y="426">▶ recording · transcript · per-question scores</text>
+          </g>
+        </svg>
+        </div>
+        <div class="scene-cap">
+          <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <ol class="caps">
+            <li><b>Candidate joins</b> A browser call over WebRTC: the AI interviewer appears on video and recording starts.</li>
+            <li><b>Question planning</b> A planner agent reads the resume and job description and picks the next question.</li>
+            <li><b>AI asks</b> The interviewer agent speaks through a synced avatar, with live captions.</li>
+            <li><b>Candidate answers</b> Streaming speech-to-text follows the answer in real time, with natural turn-taking.</li>
+            <li><b>Parallel judges</b> Several LLM judges score the answer at once, and the planner adapts with a follow-up.</li>
+            <li><b>Report</b> Recruiters get competency scores, a recommendation, and the full recording and transcript.</li>
+          </ol>
+          <button class="tbtn" type="button">Pause</button>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div><h4>Multi-agent design</h4><p>Planner, interviewer, judge and recorder roles coordinated in Pipecat over WebRTC, with questions generated from the resume, the job description and earlier answers.</p></div>
+        <div><h4>Evaluation</h4><p>LLM-as-judge scoring against a per-competency rubric, with judge calls run in parallel so feedback is fast and more consistent.</p></div>
+        <div><h4>Engineering</h4><p>Solved WebRTC connectivity, race conditions and turn-taking latency; audio and video recording pipelines; deployed on AWS EC2 with a FastAPI backend.</p></div>
+      </div>
+      <div class="chips" style="margin-top:22px"><span>Pipecat</span><span>WebRTC</span><span>FastAPI</span><span>LLM-as-judge</span><span>Avatar video</span><span>AWS EC2</span></div>
+    </article>
+
+  </section>
+
   <!-- PRINCIPLES -->
   <section id="principles">
-    <div class="sec-head"><div class="sec-num">04 · Approach</div><h2>How I build</h2></div>
+    <div class="sec-head"><div class="sec-num">05 · Approach</div><h2>How I build</h2></div>
     <div class="body principles">
       <div><h3>Measure first</h3><p>No model change ships without an eval that agrees with human reviewers. Better means faster inference, higher recall, lower hallucination rate — in numbers.</p></div>
       <div><h3>Own the inference</h3><p>In a bank, data residency decides the architecture. Self-hosted serving, tuned for the GPUs you actually have, beats a slide about the GPUs you wish you had.</p></div>
@@ -781,7 +1092,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
 
   <!-- WRITING -->
   <section id="writing">
-    <div class="sec-head"><div class="sec-num">05 · Writing</div><h2>Guides &amp; writing</h2></div>
+    <div class="sec-head"><div class="sec-num">06 · Writing</div><h2>Guides &amp; writing</h2></div>
     <div class="body">
       <div class="pubs">
         <a class="pub" href="https://mrjaggu.github.io/agentic-ai-architect-learning/">
@@ -814,7 +1125,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="sec-head"><div class="sec-num">06 · Experience</div><h2>Where I've worked</h2></div>
+    <div class="sec-head"><div class="sec-num">07 · Experience</div><h2>Where I've worked</h2></div>
     <div class="body">
       <div class="tl">
         <div class="role"><div class="when">2023 – now</div><div>
@@ -852,7 +1163,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
 
   <!-- TOOLKIT -->
   <section id="toolkit">
-    <div class="sec-head"><div class="sec-num">07 · Toolkit</div><h2>What I work with</h2></div>
+    <div class="sec-head"><div class="sec-num">08 · Toolkit</div><h2>What I work with</h2></div>
     <div class="body skills">
       <div><h4>GenAI &amp; agents</h4><p>RAG (dense + hybrid), SFT / LoRA / RLHF, CrewAI, LangChain, LlamaIndex, text-to-SQL, tool-use pipelines</p></div>
       <div><h4>Inference</h4><p>vLLM, TGI, Triton, KV / prefix caching, GPTQ · AWQ · GGUF quantization, multi-GPU replicas</p></div>
@@ -1087,6 +1398,84 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
   btn.addEventListener('click', function(){
     paused = !paused; btn.textContent = paused ? 'Play' : 'Pause'; clearAll();
     if (!paused) stage(k < 0 ? 0 : k);
+  });
+})();
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var STORIES = {
+    doctor: { cx:[90,560,300,90,820,90], steps:[
+      {d:3600,a:[[0,'+','.pat','talk'],[0,'+','.in','on'],[0,'+','.p-vad','on'],[500,'+','.p-stt','on'],[600,'+','.t0','show'],
+                 [1500,'t','#d-intent','intent: book_appointment'],[1500,'+','#d-intent','on'],[1900,'t','#d-spec','specialty: cardiology'],[1900,'+','#d-spec','on'],
+                 [2800,'-','.pat','talk'],[2800,'-','.in','on'],[3000,'-','.p-vad,.p-stt','on']]},
+      {d:3000,a:[[0,'+','.p-llm','on'],[0,'+','.pipe','on'],[500,'+','.t-cal','on'],[700,'+','.c-cal','on'],[1100,'+','.s1,.s2','on'],[1200,'+','.t1','show'],
+                 [2700,'-','.t-cal,.c-cal','on'],[2700,'-','.p-llm','on']]},
+      {d:3000,a:[[0,'+','.p-tts','on'],[0,'+','.bot-rx','talk'],[0,'+','.out','on'],[300,'+','.t2','show']]},
+      {d:3000,a:[[0,'+','.pat','talk'],[0,'+','.in','on'],[200,'+','.t3','show'],[500,'-','.bot-rx','talk'],[500,'-','.out','on'],[500,'-','.p-tts','on'],
+                 [500,'+','.barge','show'],[500,'+','.p-vad','on'],[1400,'-','.s2','on'],[1400,'+','.s1','picked'],[1400,'t','#d-slot','slot: Thu 11:30'],[1400,'+','#d-slot','on'],
+                 [2000,'-','.pat','talk'],[2000,'-','.in','on'],[2600,'-','.barge','show'],[2600,'-','.p-vad','on']]},
+      {d:3200,a:[[0,'+','.p-llm','on'],[300,'+','.t-db','on'],[500,'+','.c-db','on'],[700,'+','.c-db-st','show'],[1300,'+','.t-sms','on'],[1500,'+','.c-sms','on'],[1700,'+','.c-sms-st','show'],
+                 [900,'+','.t4','show'],[2900,'-','.t-db,.t-sms,.c-db,.c-sms,.p-llm','on']]},
+      {d:3800,a:[[0,'+','.p-tts','on'],[0,'+','.bot-rx','talk'],[0,'+','.out','on'],[300,'+','.t5','show'],[1800,'-','.bot-rx','talk'],[1800,'-','.out','on'],[1800,'-','.p-tts','on'],[1800,'-','.pipe','on'],
+                 [2000,'+','.note','show']]}
+    ]},
+    interview: { cx:[200,700,456,100,830,785], steps:[
+      {d:2800,a:[[0,'+','.j-in,.j-out','on'],[0,'+','.live-dot','on'],[300,'+','.vid','show'],[700,'+','.rec2','on'],[700,'+','.b-rec','on'],[2500,'-','.j-in,.j-out','on']]},
+      {d:2800,a:[[0,'+','.b-plan','on'],[0,'+','.j-ag','on'],[0,'t','#i-out','reading resume + job description…'],[900,'+','.t0','show'],[1200,'t','#i-out','Q1 planned'],[2600,'-','.b-plan','on'],[2600,'-','.j-ag','on']]},
+      {d:3200,a:[[0,'+','.b-int','on'],[0,'+','.av','talk'],[0,'+','.j-out','on'],[200,'+','.sub','show'],[400,'+','.t1','show'],[0,'t','#i-out','interviewer speaking'],
+                 [2800,'-','.av','talk'],[2800,'-','.b-int','on'],[2800,'-','.j-out','on']]},
+      {d:3200,a:[[0,'-','.sub','show'],[0,'+','.cand','talk'],[0,'+','.tile-me','speaking'],[0,'+','.j-in','on'],[0,'t','#i-out','streaming speech-to-text…'],[400,'+','.t2','show'],
+                 [2800,'-','.cand','talk'],[2800,'-','.tile-me','speaking'],[2800,'-','.j-in','on']]},
+      {d:4200,a:[[0,'+','.b-judge','on'],[0,'+','.j-ag','on'],[0,'t','#i-out','3 judges scoring in parallel…'],[1000,'t','#i-out','depth 4 · clarity 5 · relevance 4'],[1000,'+','.t3','show'],
+                 [1900,'-','.b-judge','on'],[1900,'+','.b-plan','on'],[2200,'+','.t4','show'],[2200,'t','#i-out','follow-up planned'],
+                 [2600,'t','#i-sub','How did you evaluate retrieval?'],[2600,'+','.sub','show'],[2600,'+','.av','talk'],[2600,'+','.b-int','on'],[2600,'-','.b-plan','on'],
+                 [4000,'-','.av','talk'],[4000,'-','.b-int','on'],[4000,'-','.j-ag','on']]},
+      {d:4000,a:[[0,'-','.sub','show'],[0,'+','.report','fill'],[0,'t','#i-out','report generated'],[1200,'+','.rec-chip','show'],[1800,'+','.attach','show'],[1800,'-','.rec2','on'],[1800,'-','.b-rec','on']]}
+    ]}
+  };
+  var CLS = ['on','show','talk','fill','speaking','picked'];
+  document.querySelectorAll('[data-story]').forEach(function(root){
+    var cfg = STORIES[root.getAttribute('data-story')]; if (!cfg) return;
+    var steps = cfg.steps, svg = root.querySelector('svg'), frame = root.querySelector('.scene-frame'),
+        caps = root.querySelectorAll('.caps li'), prog = root.querySelectorAll('.prog i'), btn = root.querySelector('.tbtn');
+    var k = -1, timers = [], visible = false, paused = false;
+    function $$(sel){ return svg.querySelectorAll(sel); }
+    function run(a){
+      var els = $$(a[2]);
+      els.forEach(function(e){
+        if (a[1]==='+') e.classList.add(a[3]); else if (a[1]==='-') e.classList.remove(a[3]); else if (a[1]==='t') e.textContent = a[3];
+      });
+    }
+    function reset(){
+      CLS.forEach(function(c){ $$('.'+c).forEach(function(e){ e.classList.remove(c); }); });
+      $$('[data-t0]').forEach(function(e){ e.textContent = e.getAttribute('data-t0'); });
+    }
+    function clearAll(){ timers.forEach(clearTimeout); timers = []; }
+    function follow(n){ if (frame.scrollWidth > frame.clientWidth + 2) frame.scrollLeft = cfg.cx[n]/960*svg.getBoundingClientRect().width - frame.clientWidth/2; }
+    function stage(n){
+      k = n; if (n === 0) reset(); follow(n);
+      caps.forEach(function(e,i){ e.classList.toggle('cur', i===n); });
+      prog.forEach(function(e,i){ e.classList.toggle('cur', i===n); e.classList.toggle('done', i<n); });
+      steps[n].a.forEach(function(a){ timers.push(setTimeout(function(){ run(a); }, a[0])); });
+      timers.push(setTimeout(function(){ if (!paused && visible) stage(n >= steps.length-1 ? 0 : n+1); }, steps[n].d));
+    }
+    if (reduce){
+      root.classList.add('static'); btn.hidden = true; reset();
+      steps.forEach(function(s){ s.a.slice().sort(function(x,y){return x[0]-y[0];}).forEach(run); });
+      ['talk','speaking'].forEach(function(c){ $$('.'+c).forEach(function(e){ e.classList.remove(c); }); });
+      $$('.lnk.on').forEach(function(e){ e.classList.remove('on'); });
+      return;
+    }
+    reset();
+    new IntersectionObserver(function(es){
+      visible = es[0].isIntersecting; clearAll();
+      if (visible && !paused) stage(k < 0 ? 0 : k);
+    }, {threshold:.3}).observe(root);
+    btn.addEventListener('click', function(){
+      paused = !paused; btn.textContent = paused ? 'Play' : 'Pause'; clearAll();
+      if (!paused) stage(k < 0 ? 0 : k);
+    });
   });
 })();
 </script>
