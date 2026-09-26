@@ -10,6 +10,15 @@
 <meta property="og:url" content="https://mrjaggu.github.io/about_me/">
 <meta property="og:type" content="profile">
 <meta property="og:image" content="https://mrjaggu.github.io/about_me/images/ajay.jpg">
+<link rel="canonical" href="https://mrjaggu.github.io/about_me/">
+<meta name="author" content="Ajay Jangid">
+<meta name="keywords" content="Ajay Jangid, GenAI architect, agentic AI, RAG, voice AI, call analytics, LLM inference, AI consultant Mumbai, banking AI">
+<meta property="og:site_name" content="Ajay Jangid">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajay Jangid — AI & GenAI Engineering">
+<meta name="twitter:description" content="Production voice AI, RAG and agentic systems for regulated banking.">
+<meta name="twitter:image" content="https://mrjaggu.github.io/about_me/images/ajay.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Ajay Jangid", "url": "https://mrjaggu.github.io/about_me/", "image": "https://mrjaggu.github.io/about_me/images/ajay.jpg", "jobTitle": "Assistant Vice President, AI & GenAI Engineering", "worksFor": {"@type": "Organization", "name": "Axis Bank"}, "address": {"@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN"}, "alumniOf": [{"@type": "CollegeOrUniversity", "name": "BITS Pilani"}], "knowsAbout": ["Generative AI", "Agentic AI", "Retrieval-Augmented Generation", "LLM inference", "Speech recognition", "Voice AI", "MLOps", "LLMOps"], "sameAs": ["https://www.linkedin.com/in/ajayjangid21/", "https://github.com/Mrjaggu", "https://medium.com/@jangidajay271"]}</script>
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,6 +260,20 @@ p + p{margin-top:14px}
 .ptag{font:400 11.5px var(--mono);color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:1px 7px;white-space:nowrap}
 .post:hover .ptitle{color:var(--accent)}
 @media (max-width:820px){ .post{grid-template-columns:1fr auto;gap:4px 12px} .ptitle{grid-column:1/-1;grid-row:2} }
+.avail{display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;padding:6px 14px 6px 11px;border:1px solid color-mix(in srgb,#3fb27f 45%,var(--rule));background:color-mix(in srgb,#3fb27f 10%,transparent);border-radius:999px;font:500 13px var(--sans);text-decoration:none;color:var(--ink)}
+.avail:hover{border-color:#3fb27f;color:var(--ink)}
+.avail i,.avail-dot{position:relative;width:8px;height:8px;border-radius:50%;background:#3fb27f;display:inline-block}
+.avail i::after,.avail-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #3fb27f;opacity:0;animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(.5);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+.avail-dot{margin-right:10px;vertical-align:1px}
+.offers{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:36px;max-width:820px}
+.follow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:40px;padding-top:28px;border-top:1px solid var(--rule)}
+.follow span{color:var(--muted);font-size:15px;margin-right:6px}
+.offers h3{font:400 22px/1.2 var(--serif);margin-bottom:6px}
+.offers p{color:var(--muted);font-size:15px}
+footer .big{margin-top:14px}
+@media (max-width:820px){ .offers{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .avail i::after,.avail-dot::after{animation:none} }
 /* grid of systems */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .card{border-top:2px solid var(--ink);padding-top:18px}
@@ -332,7 +355,7 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
       <a href="#systems">Systems</a>
       <a href="#writing">Writing</a>
       <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+      <a href="#work-with-me">Work with me</a>
     </nav>
   </div>
 </header>
@@ -837,13 +860,23 @@ footer .fine{margin-top:40px;font:400 12px var(--mono);color:var(--faint)}
 
 <footer id="contact">
   <div class="wrap">
-    <p class="big">Building production AI in a regulated industry? I'm happy to compare notes — <a href="mailto:jangidajay271@gmail.com">say hello</a>.</p>
+    <div id="work-with-me" class="sec-num" style="color:var(--accent)"><span class="avail-dot"></span>Open to freelance &amp; consulting</div>
+    <p class="big">Building production AI in a regulated industry? I take on a small number of advisory and hands-on engagements — <a href="mailto:jangidajay271@gmail.com?subject=Consulting%20enquiry">let's talk</a>.</p>
+    <div class="offers">
+      <div><h3>Architecture reviews</h3><p>A second pair of eyes on your GenAI, RAG or agentic system design — before it meets production traffic or an auditor.</p></div>
+      <div><h3>Voice AI &amp; call analytics</h3><p>ASR for noisy, multilingual audio, scoring rubrics, and serving that stays inside your cost-per-call budget.</p></div>
+      <div><h3>Agents, RAG &amp; evals</h3><p>From prototype to production: harness design, retrieval quality, guardrails, and eval suites your team can trust.</p></div>
+      <div><h3>Talks &amp; workshops</h3><p>Guest lectures, meetups and team workshops on shipping GenAI in banking and other regulated industries.</p></div>
+    </div>
+    <div class="follow">
+      <span>Not ready to talk yet? Follow along —</span>
+      <a class="btn" href="https://www.linkedin.com/in/ajayjangid21/">Follow on LinkedIn</a>
+      <a class="btn" href="https://medium.com/@jangidajay271">Read on Medium</a>
+      <a class="btn" href="https://github.com/Mrjaggu">Star on GitHub</a>
+    </div>
     <div class="links">
-      <a href="mailto:jangidajay271@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/ajayjangid21/">LinkedIn</a>
-      <a href="https://github.com/Mrjaggu">GitHub</a>
-      <a href="https://medium.com/@jangidajay271">Medium</a>
-      <a href="Resume.pdf">Résumé</a>
+      <a href="mailto:jangidajay271@gmail.com?subject=Consulting%20enquiry">jangidajay271@gmail.com</a>
+      <a href="Resume.pdf">Résumé (PDF)</a>
     </div>
     <div class="fine">© 2026 Ajay Jangid · Mumbai, India</div>
   </div>

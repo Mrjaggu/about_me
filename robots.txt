@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrjaggu.github.io/about_me/sitemap.xml
